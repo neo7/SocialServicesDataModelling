@@ -1,0 +1,304 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "zzzz-zzzz",
+      "name" : "Performance Metrics - Family & Support Services - Senior Services Nutrition Monthly Utilization",
+      "attribution" : "City of Chicago",
+      "attributionLink" : "http://www.cityofchicago.org/performance",
+      "averageRating" : 0,
+      "category" : "Administration & Finance",
+      "description" : "This metric tracks the number of congregate and home delivered meals provided to seniors per month. DFSS, Senior Services division is the city’s Area Agency on Aging for older adults. DFSS offers a wide variety of programs and services that address the diverse needs and interests of older adults in Chicago from those who are healthy and active to those who are frail and homebound.  The Congregate Dining Program strengthens social relationships while addressing the problem of poor nutrition among older adults. Each day Senior Services provides seniors with opportunities for nutritious meals, socialization, recreation, education and volunteer activities through approximately 60 co-sponsored congregate dining sites which annually serve over 20,000 senior residents. DFSS also provides over 11,000 frail homebound older adults with hot home delivered meals five days a week.",
+      "displayType" : "table",
+      "downloadCount" : 0,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1478716112,
+      "moderationStatus" : true,
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 0,
+      "publicationAppendEnabled" : false,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1478715199,
+      "rowsUpdatedBy" : "757f-v7sk",
+      "tableId" : 1644712,
+      "totalTimesRated" : 0,
+      "viewCount" : 0,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 156702431,
+        "name" : "Month",
+        "dataTypeName" : "text",
+        "fieldName" : "month",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 1503272,
+        "width" : 160,
+        "format" : { }
+      }, {
+        "id" : 156702432,
+        "name" : "Year",
+        "dataTypeName" : "text",
+        "fieldName" : "year",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 2402963,
+        "width" : 100,
+        "format" : { }
+      }, {
+        "id" : 156702433,
+        "name" : "Home Delievered Meals",
+        "dataTypeName" : "number",
+        "fieldName" : "home_delievered_meals",
+        "position" : 3,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1503273,
+        "width" : 192,
+        "format" : { }
+      }, {
+        "id" : 156702434,
+        "name" : "Congregate Dining Program",
+        "dataTypeName" : "number",
+        "fieldName" : "congregate_dining_program",
+        "position" : 4,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1503274,
+        "width" : 221,
+        "format" : { }
+      } ],
+      "displayFormat" : {
+        "fixedColumns" : [ "month" ],
+        "seriesColumns" : [ { } ],
+        "xAxis" : {
+          "valueInBar" : false,
+          "labelInBar" : false
+        },
+        "legend" : "bottom",
+        "hideDsgMsg" : false,
+        "titleX" : "Month",
+        "yAxis" : {
+          "formatter" : {
+            "abbreviate" : false
+          }
+        },
+        "errorBarColor" : "#ff0000",
+        "chartType" : "column",
+        "valueColumns" : [ {
+          "fieldName" : "home_delievered_meals",
+          "color" : "#042656"
+        }, {
+          "fieldName" : "congregate_dining_program",
+          "color" : "#19538b"
+        } ],
+        "sortSeries" : false,
+        "legendDetails" : {
+          "showValueMarkers" : true,
+          "showSeries" : true
+        },
+        "descriptionColumns" : [ { } ]
+      },
+      "grants" : [ {
+        "inherited" : true,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "richRendererConfigs" : {
+          "fatRow" : {
+            "headerShown" : false
+          }
+        },
+        "rdfSubject" : "0",
+        "custom_fields" : {
+          "Metadata" : {
+            "Last Updated Date via Automated Load" : "",
+            "Time Period" : "January 2011 to present",
+            "Frequency" : "Data is updated monthly",
+            "Data Owner" : "Family & Support Services"
+          }
+        },
+        "availableDisplayTypes" : [ "chart", "table", "fatrow", "page" ],
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        }
+      },
+      "query" : {
+        "filterCondition" : {
+          "type" : "operator",
+          "value" : "AND",
+          "metadata" : {
+            "freeform" : true,
+            "tableColumnId" : {
+              "239037" : 2402963
+            },
+            "unifiedVersion" : 2,
+            "operator" : "EQUALS"
+          }
+        }
+      },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "7jj6-h75i",
+        "displayName" : "Eve",
+        "screenName" : "Eve"
+      },
+      "tags" : [ "performance metrics", "service delivery", "human services" ],
+      "viewFilters" : {
+        "type" : "operator",
+        "value" : "AND",
+        "metadata" : {
+          "freeform" : true,
+          "tableColumnId" : {
+            "239037" : 2402963
+          },
+          "unifiedVersion" : 2,
+          "operator" : "EQUALS"
+        }
+      },
+      "flags" : [ "unsaved" ]
+    }
+  },
+  "data" : [ [ 678, "F9F4FFF1-5C55-41F8-A6D6-A6026D32E463", 678, 1478715198, "892123", 1478715198, "892123", null, "11-Jan", "2011", "294310", "60500" ]
+, [ 679, "269E2F7F-5374-4BD7-ABF6-C377B5BCF6FD", 679, 1478715198, "892123", 1478715198, "892123", null, "11-Feb", "2011", "265370", "56176" ]
+, [ 680, "CB28760B-1958-446C-9BA7-7D7533382653", 680, 1478715198, "892123", 1478715198, "892123", null, "11-Mar", "2011", "317833", "69730" ]
+, [ 681, "3820901F-9399-44F6-B5C3-A4B76721D2F5", 681, 1478715198, "892123", 1478715198, "892123", null, "11-Apr", "2011", "294102", "66780" ]
+, [ 682, "92A4D49D-2864-4254-9F3D-CF9A3DEEC360", 682, 1478715198, "892123", 1478715198, "892123", null, "11-May", "2011", "306915", "65871" ]
+, [ 683, "04BD449F-7E4E-42DD-A6C7-6FEB05CBE2A4", 683, 1478715198, "892123", 1478715198, "892123", null, "11-Jun", "2011", "306224", "65306" ]
+, [ 684, "1DA1A347-8E8E-4D55-97CD-72F32B1E72CE", 684, 1478715198, "892123", 1478715198, "892123", null, "11-Jul", "2011", "293167", "61971" ]
+, [ 685, "C6432077-65F3-42FC-AC4F-8FB0CBFBEE08", 685, 1478715198, "892123", 1478715198, "892123", null, "11-Aug", "2011", "305689", "69947" ]
+, [ 686, "36C89CC6-C75A-4ABB-A160-095B3CD78CD4", 686, 1478715198, "892123", 1478715198, "892123", null, "11-Sep", "2011", "301619", "66316" ]
+, [ 687, "47B197B1-0D4F-406E-9B80-FCB140806720", 687, 1478715198, "892123", 1478715198, "892123", null, "11-Oct", "2011", "288568", "65601" ]
+, [ 688, "59EC72F8-3B77-433B-A1CB-0ABFBE0F7662", 688, 1478715198, "892123", 1478715198, "892123", null, "11-Nov", "2011", "292375", "62380" ]
+, [ 689, "0B3E7CED-FEBA-4D2B-9352-213FEEC299D8", 689, 1478715198, "892123", 1478715198, "892123", null, "11-Dec", "2011", "288568", "62232" ]
+, [ 690, "2008A622-4F59-4204-A14D-D05767CEE720", 690, 1478715198, "892123", 1478715198, "892123", null, "12-Jan", "2012", "254720", "60169" ]
+, [ 691, "89094B19-898B-457F-92DD-5C715AD3B7BC", 691, 1478715198, "892123", 1478715198, "892123", null, "12-Feb", "2012", "228977", "62029" ]
+, [ 692, "3F110FD1-055A-40AF-AF27-485EA4C45A4E", 692, 1478715198, "892123", 1478715198, "892123", null, "12-Mar", "2012", "271455", "66161" ]
+, [ 693, "1BE44542-657E-4763-B39F-2393446254FB", 693, 1478715198, "892123", 1478715198, "892123", null, "12-Apr", "2012", "240265", "62555" ]
+, [ 694, "00DDCE44-EA84-43FA-AAF0-0B4D80058C72", 694, 1478715198, "892123", 1478715198, "892123", null, "12-May", "2012", "271318", "66600" ]
+, [ 695, "E091A49D-7A8D-42F0-AF5D-49BE31B6502F", 695, 1478715198, "892123", 1478715198, "892123", null, "12-Jun", "2012", "246996", "62374" ]
+, [ 696, "BED71459-7978-4365-9914-150B64F54330", 696, 1478715198, "892123", 1478715198, "892123", null, "12-Jul", "2012", "252113", "63418" ]
+, [ 697, "EA5444DA-9579-4A6F-83D7-B32B7B097691", 697, 1478715198, "892123", 1478715198, "892123", null, "12-Aug", "2012", "259253", "67859" ]
+, [ 698, "AD763488-4D6C-4159-8AC0-B2C5BB9D4541", 698, 1478715198, "892123", 1478715198, "892123", null, "12-Sep", "2012", "225040", "65261" ]
+, [ 699, "25190B93-F2FA-4AE6-8B13-FEBBC79AD91E", 699, 1478715198, "892123", 1478715198, "892123", null, "12-Oct", "2012", "208989", "71233" ]
+, [ 700, "55350F60-0D4E-4CFE-B329-A40E523C9418", 700, 1478715198, "892123", 1478715198, "892123", null, "12-Nov", "2012", "237981", "61624" ]
+, [ 701, "8ECD36FF-0F31-4845-BD0C-514EC94D10A5", 701, 1478715198, "892123", 1478715198, "892123", null, "12-Dec", "2012", "225401", "58216" ]
+, [ 702, "C327DB1F-1058-4AB3-9366-7C18A03EF450", 702, 1478715198, "892123", 1478715198, "892123", null, "13-Jan", "2013", "240254", "63024" ]
+, [ 703, "243E2435-462D-46C3-B806-8741A6E88F03", 703, 1478715198, "892123", 1478715198, "892123", null, "13-Feb", "2013", "207160", "57570" ]
+, [ 704, "1A885D49-9048-4013-8CA4-1BD54C974EBC", 704, 1478715198, "892123", 1478715198, "892123", null, "13-Mar", "2013", "216632", "62696" ]
+, [ 705, "3A49EE6A-832D-43E0-8666-108F72723529", 705, 1478715198, "892123", 1478715198, "892123", null, "13-Apr", "2013", "221322", "66115" ]
+, [ 706, "0A4CDB13-46FF-4B3A-8BDE-8D3A78E5F75C", 706, 1478715198, "892123", 1478715198, "892123", null, "13-May", "2013", "228286", "66125" ]
+, [ 707, "BDEB69A3-7A83-4B42-8ACB-FE691D6690EB", 707, 1478715198, "892123", 1478715198, "892123", null, "13-Jun", "2013", "196547", "61461" ]
+, [ 708, "6D6730BC-C657-42BF-98FF-F11420DC1575", 708, 1478715198, "892123", 1478715198, "892123", null, "13-Aug", "2013", "219776", "65346" ]
+, [ 709, "5B64499D-E1B3-46B6-A677-D392F946593C", 709, 1478715198, "892123", 1478715198, "892123", null, "13-Sep", "2013", "209047", "66272" ]
+, [ 710, "E5F253F3-8A01-4DC2-A152-5E9FD5E9DD2E", 710, 1478715198, "892123", 1478715198, "892123", null, "13-Oct", "2013", "196848", "60603" ]
+, [ 711, "7EE87CD3-7D1A-464A-9709-31CD4AD0A27C", 711, 1478715198, "892123", 1478715198, "892123", null, "13-Nov", "2013", "212673", "70054" ]
+, [ 712, "E7373F85-C894-4485-B545-029FB760FBEE", 712, 1478715198, "892123", 1478715198, "892123", null, "13-Dec", "2013", "199514", "61353" ]
+, [ 713, "69AD8D84-565D-47A9-92EF-3829F9274134", 713, 1478715198, "892123", 1478715198, "892123", null, "14-Jan", "2014", "207000", "59071" ]
+, [ 714, "B59C1153-BBFC-41FC-8E73-46DF45832A35", 714, 1478715198, "892123", 1478715198, "892123", null, "14-Feb", "2014", "179574", "57603" ]
+, [ 715, "B4B2B205-7916-4ED5-8556-2747AD87C12A", 715, 1478715198, "892123", 1478715198, "892123", null, "14-Mar", "2014", "190242", "64109" ]
+, [ 716, "F3BDACF2-E24A-4196-A5F6-92277A9F6566", 716, 1478715198, "892123", 1478715198, "892123", null, "14-Apr", "2014", "197188", "67676" ]
+, [ 717, "C0ABC0C2-35DF-499C-9C2B-3B178B8ADA91", 717, 1478715198, "892123", 1478715198, "892123", null, "14-May", "2014", "196286", "66254" ]
+, [ 718, "438B64E2-5DF4-4D33-A687-AA7D301E1C86", 718, 1478715198, "892123", 1478715198, "892123", null, "14-Jun", "2014", "184309", "66128" ]
+, [ 719, "1DBC4122-2189-4C52-9FD2-A0BE8D82F046", 719, 1478715198, "892123", 1478715198, "892123", null, "14-Jul", "2014", "198768", "69073" ]
+, [ 720, "6C81C459-EBAA-405A-817C-4BA0E085097D", 720, 1478715198, "892123", 1478715198, "892123", null, "14-Aug", "2014", "181058", "75533" ]
+, [ 721, "45AD9750-160D-4860-B27A-DC99E38E4F5F", 721, 1478715198, "892123", 1478715198, "892123", null, "14-Sep", "2014", "188403", "67264" ]
+, [ 722, "ED0434AD-4A81-49B7-ADC3-EA0C8181424D", 722, 1478715198, "892123", 1478715198, "892123", null, "14-Oct", "2014", "196405", "71287" ]
+, [ 723, "EA2E385A-8F02-4354-AA96-7F82D2875512", 723, 1478715198, "892123", 1478715198, "892123", null, "14-Nov", "2014", "172982", "58879" ]
+, [ 724, "A582A5DA-7168-46C9-8935-3EC329D9A2F6", 724, 1478715198, "892123", 1478715198, "892123", null, "14-Dec", "2014", "195524", "65755" ]
+, [ 725, "F5CD6C66-C8FE-4808-B6AD-1FF65F5EEE0C", 725, 1478715198, "892123", 1478715198, "892123", null, "15-Jan", "2015", "186524", "61642" ]
+, [ 726, "11D779B9-4499-4B85-85E8-8B4476B27FA8", 726, 1478715198, "892123", 1478715198, "892123", null, "15-Feb", "2015", "168506", "58962" ]
+, [ 727, "DC06798D-4ABF-4201-A961-E4F151FEBE37", 727, 1478715198, "892123", 1478715198, "892123", null, "15-Mar", "2015", "185496", "68403" ]
+, [ 728, "C2191259-4085-48E1-A0CB-E9AB2D16C966", 728, 1478715198, "892123", 1478715198, "892123", null, "15-Apr", "2015", "184670", "68738" ]
+, [ 729, "145B4127-A23A-440C-804B-1B54B4E10119", 729, 1478715198, "892123", 1478715198, "892123", null, "15-May", "2015", "177375", "64646" ]
+, [ 730, "F7BA955D-0885-4DF4-A72C-9BEC0194D522", 730, 1478715198, "892123", 1478715198, "892123", null, "15-Jun", "2015", "183491", "69350" ]
+, [ 731, "F3682939-E675-4C81-8E21-FEE5943FD11E", 731, 1478715198, "892123", 1478715198, "892123", null, "15-Jul", "2015", "206360", "70085" ]
+, [ 732, "4AC49340-11B6-4BF8-B90C-F73C7BCB09C3", 732, 1478715198, "892123", 1478715198, "892123", null, "15-Aug", "2015", "193190", "65733" ]
+, [ 733, "56623329-CF6A-442B-8077-F251CFAA8AC3", 733, 1478715198, "892123", 1478715198, "892123", null, "15-Sep", "2015", "210003", "76458" ]
+, [ 734, "D1B62207-E435-4552-8F4F-E5D28CAC032D", 734, 1478715198, "892123", 1478715198, "892123", null, "15-Oct", "2015", "210414", "70962" ]
+, [ 735, "190D0147-02EF-4051-AFE2-60FC483D07B2", 735, 1478715198, "892123", 1478715198, "892123", null, "15-Nov", "2015", "206932", "62762" ]
+, [ 736, "F7B971A9-6BFB-478D-A787-F866FBD50354", 736, 1478715198, "892123", 1478715198, "892123", null, "15-Dec", "2015", "217046", "68246" ]
+, [ 737, "F2705011-7F7C-4162-A90F-5077B37B1C8E", 737, 1478715198, "892123", 1478715198, "892123", null, "16-Jan", "2016", "198738", "62918" ]
+, [ 738, "896584E0-0355-4165-8297-9D011916685B", 738, 1478715198, "892123", 1478715198, "892123", null, "16-Feb", "2016", "196788", "63843" ]
+, [ 739, "4C0D9844-DB79-49EE-8AD1-21979CE1A55B", 739, 1478715198, "892123", 1478715198, "892123", null, "16-Mar", "2016", "212663", "71018" ]
+, [ 740, "90E4D24E-8F12-4858-8386-5D4669A7E55D", 740, 1478715198, "892123", 1478715198, "892123", null, "16-Apr", "2016", "193836", "67155" ]
+, [ 741, "57761B3B-A425-49A8-BEFC-7E945D9BD67F", 741, 1478715198, "892123", 1478715198, "892123", null, "16-May", "2016", "199817", "66591" ]
+, [ 742, "89BC6CBC-14F0-4D25-8C6B-657158160507", 742, 1478715198, "892123", 1478715198, "892123", null, "16-Jun", "2016", "199042", "68620" ]
+, [ 743, "8BB3FDA9-A363-4B96-8209-27884E2EEFBD", 743, 1478715198, "892123", 1478715198, "892123", null, "16-Jul", "2016", "189673", "63336" ]
+, [ 744, "B52E85F4-1AD0-4C75-91F6-66BF00E6CE5E", 744, 1478715198, "892123", 1478715198, "892123", null, "16-Aug", "2016", "202649", "70860" ]
+, [ 745, "DE004D72-5138-46BE-BEE4-0506F7CBB5CE", 745, 1478715198, "892123", 1478715198, "892123", null, "16-Sep", "2016", "191523", "73958" ]
+ ]
+}
