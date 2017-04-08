@@ -1,4 +1,3 @@
-
 function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
 }
@@ -7,233 +6,50 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
+
 var housingLink = document.getElementById("housing");
 var dashboardContainer = document.getElementById("dashboard-container")
+
 housingLink.addEventListener("click", function(){
   var DataFrame = dfjs.DataFrame;
-  //var htmlString = "Senior Citizen Meal Distribution <br />";
-  //DataFrame.fromCSV('http://vincentarelbundock.github.io/Rdatasets/csv/COUNT/titanic.csv').then(df => df);
-  //new DataFrame(df)
-  //df.show();
-  //const df = new DataFrame.fromCSV('http://vincentarelbundock.github.io/Rdatasets/csv/COUNT/titanic.csv').then(df => {df.show()});
-  //dashboardContainer.insertAdjacentHTML('beforeend', df.show());
-  DataFrame.fromCSV('http://vincentarelbundock.github.io/Rdatasets/csv/COUNT/titanic.csv').then(
-    df => {
-        // Let's go to display quicly our table.
-        df.show();
-        // It looks like that, with one passenger by line.
-        // |           | class     | age       | sex       | survived  |
-        // ------------------------------------------------------------
-        // | 1         | 1st class | adults    | man       | yes       |
-        // | 2         | 1st class | adults    | man       | yes       |
-        // | 3         | 1st class | adults    | man       | yes       |
-        // | 4         | 1st class | adults    | man       | yes       |
-        // | 5         | 1st class | adults    | man       | yes       |
-        // | 6         | 1st class | adults    | man       | yes       |
-        // | 7         | 1st class | adults    | man       | yes       |
-        // | 8         | 1st class | adults    | man       | yes       |
-        // | 9         | 1st class | adults    | man       | yes       |
-        // | 10        | 1st class | adults    | man       | yes       |
+  DataFrame.fromCSV('datasets/SeniorServicesMeal.csv').then(df =>{
+    var selectedDF = df.select('Month','Year','Home Delievered Meals','Congregate Dining Program')
+    var columns = selectedDF.listColumns();
+    var rows = selectedDF.toArray()
 
-        // Ok, in the csv, the first column was row index named as ''. We will rename this column.
-        const cleanDF = df.rename('', 'id');
+    var dataTable = document.createElement("TABLE");
+    dataTable.setAttribute("id", "dataTable");
+    dataTable.setAttribute("class", "main");
+    document.body.appendChild(dataTable);
+    dataTable.border = '1px';
+    dataTable.borderColor = "black";
 
-        // If we look at columnNames, the row index is replaced by the 'id' column name.
-        console.log(cleanDF.listColumns());
-        // [ 'id', 'Class', 'Sex', 'Age', 'Survived', 'Freq' ]
+    var columnHeader = document.createElement("TR");
+    columnHeader.setAttribute("id", "columnHeader");
+    document.getElementById("dataTable").appendChild(columnHeader);
 
-        // Now, our DataFrame is 'clean' with. Let's go to a quick analysis.
-        console.log('Total passengers:', cleanDF.count()); // We have 1316 passengers in the Titanic.
-        console.log('Survivors:', cleanDF.filter({survived: 'yes'}).count()); // We have 499 survivors.
-        console.log('Died:', cleanDF.filter(row => row.get('survived') === 'no').count()); // and 817 died passengers.
+    for (i = 0; i < columns.length; i++)
+    {
+      var headerTD = document.createElement("TH");
+      var headerCell = document.createTextNode(columns[i])
+      headerTD.appendChild(headerCell);
 
-        // Ok now we will count the number of passengers by class + age + sex + survived by using groupBy and aggregation.
-        const countByGroup = cleanDF.groupBy('class', 'age', 'sex', 'survived').aggregate(group => group.count());
+      document.getElementById("columnHeader").appendChild(headerTD)
 
-        // Ok, now we have the repartition of passengers by class + age + sex + survived.
-        // But it could be easier to read if we rename the aggregation and sort rows by passengers.
-        const cleanCountByGroup = countByGroup.rename('aggregation', 'passengers').sortBy('passengers', true);
-
-        // And now show the result
-        cleanCountByGroup.show(300);
-        // | class     | age       | sex       | survived  | passengers     |
-        // ------------------------------------------------------------
-        // | 3rd class | adults    | man       | no        | 387       |
-        // | 2nd class | adults    | man       | no        | 154       |
-        // | 1st class | adults    | women     | yes       | 140       |
-        // | 1st class | adults    | man       | no        | 118       |
-        // | 3rd class | adults    | women     | no        | 89        |
-        // | 2nd class | adults    | women     | yes       | 80        |
-        // | 3rd class | adults    | women     | yes       | 76        |
-        // | 3rd class | adults    | man       | yes       | 75        |
-        // | 1st class | adults    | man       | yes       | 57        |
-        // | 3rd class | child     | man       | no        | 35        |
-
-        // OK, if we just look at this table, we can see that rich people (1s Class), and more specifically women have the largest number of survivors.
-
-        // To resume this fact, it could be interesting to compute the % of survival for each group of passengers.
-        // We can do this by this way:
-        // First we compute the total number of passengers by class + age + sex.
-        const passengersByGroup = cleanDF.groupBy('class', 'age', 'sex')
-            .aggregate(group => group.count())
-            .rename('aggregation', 'totalPassengers');
-        // Then we have to join with the cleanCountByGroup table.
-        // And we compute a new Column, survival, to expose the percentage of survivors.
-        // Then, we drop totalPassengers column which is now useless.
-        const informationsByGroup = cleanCountByGroup.innerJoin(passengersByGroup, ['class', 'age', 'sex'])
-            .withColumn('survival', (row) => row.get('passengers') / row.get('totalPassengers'))
-            .drop('totalPassengers');
-
-        informationsByGroup.show(100);
-        // | class     | age       | sex       | survived  | passen... | survival  |
-        // ------------------------------------------------------------------------
-        // | 3rd class | adults    | man       | no        | 387       | 0.8376... |
-        // | 3rd class | adults    | man       | yes       | 75        | 0.1623... |
-        // | 3rd class | adults    | women     | no        | 89        | 0.5393... |
-        // | 3rd class | adults    | women     | yes       | 76        | 0.4606... |
-        // | 3rd class | child     | man       | no        | 35        | 0.7291... |
-        // | 3rd class | child     | man       | yes       | 13        | 0.2708... |
-        // | 3rd class | child     | women     | no        | 17        | 0.5483... |
-        // | 3rd class | child     | women     | yes       | 14        | 0.4516... |
-        // | 2nd class | adults    | man       | no        | 154       | 0.9166... |
-        // | 2nd class | adults    | man       | yes       | 14        | 0.0833... |
-        // | 2nd class | adults    | women     | yes       | 80        | 0.8602... |
-        // | 2nd class | adults    | women     | no        | 13        | 0.1397... |
-        // | 2nd class | child     | man       | yes       | 11        | 1         |
-        // | 2nd class | child     | women     | yes       | 13        | 1         |
-        // | 1st class | adults    | man       | no        | 118       | 0.6742... |
-        // | 1st class | adults    | man       | yes       | 57        | 0.3257... |
-        // | 1st class | adults    | women     | yes       | 140       | 0.9722... |
-        // | 1st class | adults    | women     | no        | 4         | 0.0277... |
-        // | 1st class | child     | man       | yes       | 5         | 1         |
-        // | 1st class | child     | women     | yes       | 1         | 1         |
-
-        // If we want to have an overview of the gender effects on survival we can use the DataFrame.stat module:
-        informationsByGroup.groupBy('sex').aggregate(group => group.stat.mean('survival')).rename('aggregation', 'mean').show();
-        informationsByGroup.groupBy('sex').aggregate(group => group.stat.sd('survival')).rename('aggregation', 'standard_deviation').show();
-        // | sex       | mean      |
-        // ------------------------
-        // | man       | 0.6       |
-        // | women     | 0.6       |
-
-        // | sex       | standa... |
-        // ------------------------
-        // | man       | 0.3560... |
-        // | women     | 0.3517... |
-
-        // Gender effects seem not obvious. What about the age effects on survival ?
-        const survivalMeanByAge = informationsByGroup.groupBy('age').aggregate(group => group.stat.mean('survival')).rename('aggregation', 'mean');
-        const survivalSDByAge = informationsByGroup.groupBy('age').aggregate(group => group.stat.sd('survival')).rename('aggregation', 'standard_deviation');
-
-        survivalMeanByAge.show();
-        survivalSDByAge.show();
-        // | age       | mean      |
-        // ------------------------
-        // | adults    | 0.5       |
-        // | child     | 0.75      |
-
-        // | age       | standa... |
-        // ------------------------
-        // | adults    | 0.3496... |
-        // | child     | 0.2951... |
-
-        // Ok that's better.
-        // Now, our boss wants a csv export of the age effects, in an exotic format (excel, damn it):
-        // |           | adults    | child     |
-        // -------------------------------------
-        // | mean    | 0.5       | 0.75      |
-        // | sd     | 0.3496... | 0.2951... |
-
-        // First we join our results.
-        const ageEffect = survivalMeanByAge.innerJoin(survivalSDByAge, 'age');
-        ageEffect.show();
-        // We now remove age column (you will understand why in few lines) and transpose the table (with columnNames);
-        const transposedAgeEffect = ageEffect.drop('age').transpose(true);
-        // It's magical, and it looks like that:
-        transposedAgeEffect.show();
-        // Now we will use the previously removed age column as columnNames.
-        // Then we reorganize columns order.
-        const transposedAgeEffectWithColumnNames = transposedAgeEffect
-            .renameAll([...ageEffect.toArray('age'), ''])
-            .restructure(['', 'adults', 'child']); // you can also .select('', 'adults', 'child');
-        // Which gives the good table:
-        transposedAgeEffectWithColumnNames.show();
-
-        // Now you have just to export it as a csv:
-        transposedAgeEffectWithColumnNames.toCSV(true, 'yourReport.csv');
     }
-).catch(err => {
-    console.log(err);
-});
-
-});
-
-var xmlhttp = new XMLHttpRequest(),
-    data;
-
-    xmlhttp.onreadystatechange = function(){
-      if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
-   	data = JSON.parse(xmlhttp.responseText);
-
-	// line chart
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
- 	 type: 'line',
-  	 data: {
-  	  labels: data.data['labels'],        //use data from json
-   	  datasets: [{
-       	    label: data.data['datasets'][0].label,
-     	    data: data.data['datasets'][0]['data'],
-          backgroundColor: data.data['datasets'][0].backgroundColor
-         }, {
-           label: data.data['datasets'][1].label,
-           data: data.data['datasets'][1]['data'],
-           backgroundColor: data.data['datasets'][1].backgroundColor
-         }]
-        }
-      });
-
-	//barchart
-	var ctx2 = document.getElementById("barChart").getContext('2d');
-	var barChart = new Chart(ctx2, {
- 	 type: 'bar',
-  	data: {
-   	 labels: data.data['labels'],
-   	 datasets: [{
-      	  label: data.data['datasets'][0].label,
-          data: data.data['datasets'][0]['data'],
-          backgroundColor: data.data['datasets'][0].backgroundColor
-       }, {
-          label: data.data['datasets'][1].label,
-          data: data.data['datasets'][1]['data'],
-          backgroundColor: data.data['datasets'][1].backgroundColor
-         }]
-        }
-      });
-
-       //radarChart
-	var ctx3 = document.getElementById("radarChart");
-	var radarChart = new Chart(ctx3, {
- 	 type: 'radar',
-  	 data: {
-         labels: ["M", "T", "W", "T", "F", "S", "S"],    //hard coded
-         datasets: [{
-          label: 'Senior Citizens',
-          backgroundColor: "rgba(153,255,51,0.4)",
-          borderColor: "rgba(153,255,51,1)",
-          data: [12, 19, 3, 17, 28, 24, 7]
-         }, {
-          label: 'Young People',
-          backgroundColor: "rgba(255,153,0,0.4)",
-          borderColor: "rgba(255,153,0,1)",
-          data: [30, 29, 5, 5, 20, 3, 10]
-        }]
+    for (i = 0; i< rows.length; i++)
+    {
+      var tableRow = document.createElement("TR");
+      tableRow.setAttribute("id", "tableRow");
+      dataTable.appendChild(tableRow);
+      var rowElements = rows[i];
+      for (j = 0; j <rowElements.length; j++)
+      {
+        var columnTD = document.createElement("TD");
+        var columnCell = document.createTextNode(rowElements[j])
+        columnTD.appendChild(columnCell);
+        tableRow.appendChild(columnTD)
       }
-     });
-
-     }
-};
-
-   //parse data from the json file
-   xmlhttp.open('GET','https://raw.githubusercontent.com/tansent/csp586/master/fruits.json',true);
-   xmlhttp.send();
+    }
+  });
+});

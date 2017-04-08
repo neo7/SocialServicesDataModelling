@@ -102,7 +102,7 @@ main.navcontent
 {
     background-color: black;
     color: white;
-    margin: 20px 0 20px 0;
+    margin: 20px 0 100px 0;
     padding: 20px;
 }
 
@@ -121,6 +121,8 @@ main.navcontent
 
 .main {
     position: absolute;
-    left:178px; top:92px; right:0; bottom:0;
+    left:180px;
+    top:120px;
+    right:0;
+    bottom:0;
 }
-
