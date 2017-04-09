@@ -17,10 +17,12 @@ housingLink.addEventListener("click", function(){
     var columns = selectedDF.listColumns();
     var rows = selectedDF.toArray()
 
+    var navcontent = document.getElementById("content")
     var dataTableDiv = document.getElementById("dataTableDiv")
     var dataTable = document.createElement("TABLE");
     dataTable.setAttribute("id", "dataTable");
     dataTable.setAttribute("class", "table")
+    navcontent.style.display = "inline";
     dataTableDiv.appendChild(dataTable);
     dataTable.border = '1px';
     dataTable.borderColor = "black";

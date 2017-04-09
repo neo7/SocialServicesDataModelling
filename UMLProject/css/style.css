@@ -100,7 +100,7 @@ p {
 
 .main .navcontent
 {
-
+  display: none;
 }
 
 .top {
