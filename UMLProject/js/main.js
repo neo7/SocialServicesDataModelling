@@ -17,16 +17,17 @@ housingLink.addEventListener("click", function(){
     var columns = selectedDF.listColumns();
     var rows = selectedDF.toArray()
 
+    var dataTableDiv = document.getElementById("dataTableDiv")
     var dataTable = document.createElement("TABLE");
     dataTable.setAttribute("id", "dataTable");
-    dataTable.setAttribute("class", "main");
-    document.body.appendChild(dataTable);
+    dataTable.setAttribute("class", "dataTable");
+    dataTableDiv.appendChild(dataTable);
     dataTable.border = '1px';
     dataTable.borderColor = "black";
 
     var columnHeader = document.createElement("TR");
     columnHeader.setAttribute("id", "columnHeader");
-    document.getElementById("dataTable").appendChild(columnHeader);
+    dataTable.appendChild(columnHeader);
 
     for (i = 0; i < columns.length; i++)
     {
@@ -34,7 +35,7 @@ housingLink.addEventListener("click", function(){
       var headerCell = document.createTextNode(columns[i])
       headerTD.appendChild(headerCell);
 
-      document.getElementById("columnHeader").appendChild(headerTD)
+      columnHeader.appendChild(headerTD)
 
     }
     for (i = 0; i< rows.length; i++)

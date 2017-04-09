@@ -98,7 +98,7 @@ p {
   margin: 0;
 }
 
-main.navcontent
+.main.navcontent
 {
     background-color: black;
     color: white;
@@ -119,10 +119,33 @@ main.navcontent
     width: 178px;
 }
 
-.main {
+.main
+{
     position: absolute;
     left:180px;
     top:120px;
     right:0;
     bottom:0;
+}
+/*
+Change here for dynamic contents with their div classes.
+*/
+.main.navcontent .dataTable
+{
+    left:300px;
+    top:120px;
+    right:0;
+    bottom:0;
+}
+.main.navcontent .columnFilter
+{
+
+}
+.main.navcontent .rowFilter
+{
+
+}
+.main.navcontent .graphicalData
+{
+
 }
