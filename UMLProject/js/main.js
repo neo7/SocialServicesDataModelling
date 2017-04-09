@@ -20,7 +20,7 @@ housingLink.addEventListener("click", function(){
     var dataTableDiv = document.getElementById("dataTableDiv")
     var dataTable = document.createElement("TABLE");
     dataTable.setAttribute("id", "dataTable");
-    dataTable.setAttribute("class", "dataTable");
+    dataTable.setAttribute("class", "table")
     dataTableDiv.appendChild(dataTable);
     dataTable.border = '1px';
     dataTable.borderColor = "black";
