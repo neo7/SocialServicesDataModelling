@@ -11,7 +11,7 @@ class Dashboard
   populateDashboard()
   {
     this.createTable();
-    this.createFilters();
+    //this.createColumnFilters();
   }
 
   createTable()
@@ -21,7 +21,12 @@ class Dashboard
     this.canvasUtil.createTableFromDataframe(df);
     });
   }
-  createFilters(){
+  createColumnFilters(){
+    console.log("creating filter for the columns");
+    console.log(this.file_url);
+    this.DataFrame.fromCSV(this.file_url).then(df => {
+    this.canvasUtil.createColumnFilters(df);
+    });
 
   }
   createChartDashboard()

@@ -26,6 +26,8 @@ class HTMLCanvasUtils {
       columnHeader.setAttribute("id", "columnHeader");
       dataTable.appendChild(columnHeader);
 
+
+
       for (var i = 0; i < columns.length; i++)
       {
         var headerTD = document.createElement("TH");
@@ -33,6 +35,17 @@ class HTMLCanvasUtils {
         headerTD.appendChild(headerCell);
 
         columnHeader.appendChild(headerTD)
+
+        var br = document.createElement("BR");
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.name = columns[i];
+        checkbox.value = columns[i];
+        checkbox.id = "id";
+        checkbox.checked = true;
+
+        headerTD.appendChild(br);
+        headerTD.appendChild(checkbox);
 
       }
       for (var i = 0; i< rows.length; i++)
@@ -49,5 +62,10 @@ class HTMLCanvasUtils {
           tableRow.appendChild(columnTD)
         }
       }
+  }
+
+  createHTMLTextBox(name, value)
+  {
+
   }
 }

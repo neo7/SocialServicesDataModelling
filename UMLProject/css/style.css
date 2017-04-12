@@ -147,8 +147,22 @@ Change here for dynamic contents with their div classes.
 
 .main .navcontent .columnFilter
 {
-
+  position: absolute;
+  left:220px;
+  top:410px;
+  right:0;
+  bottom:0;
+  overflow:hidden;
+  overflow-x: scroll;
+  height: 150px;
+  border-bottom: 1px solid black;
 }
+
+.main .navcontent .columnFilter .table
+{
+  width: 100%;
+}
+
 .main .navcontent .rowFilter
 {
 
