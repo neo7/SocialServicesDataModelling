@@ -36,15 +36,12 @@ class HTMLCanvasUtils {
 
         columnHeader.appendChild(headerTD)
 
-        var br = document.createElement("BR");
-        var checkbox = document.createElement('input');
-        checkbox.type = "checkbox";
-        checkbox.name = columns[i];
-        checkbox.value = columns[i];
-        checkbox.id = "id";
-        checkbox.checked = true;
 
-        headerTD.appendChild(br);
+
+        var checkbox = this.createHTMLTextBox(columns[i], columns[i], true);
+
+
+        headerTD.appendChild(this.createHTMLNewLine());
         headerTD.appendChild(checkbox);
 
       }
@@ -64,8 +61,22 @@ class HTMLCanvasUtils {
       }
   }
 
-  createHTMLTextBox(name, value)
+  createHTMLTextBox(name, value, checked)
   {
+    var checkboxloc = document.createElement('input');
+    checkboxloc.type = "checkbox";
+    checkboxloc.name = name;
+    checkboxloc.value = value;
+    checkboxloc.id = "id";
+    checkboxloc.checked = true;
 
+    return checkboxloc;
+  }
+
+  createHTMLNewLine()
+  {
+    var brloc = document.createElement("BR");
+
+    return brloc;
   }
 }
