@@ -61,6 +61,42 @@ class HTMLCanvasUtils {
       }
   }
 
+  createDropDownAndTextBox(dataframe)
+  {
+    var dynamicFilterDiv = document.createElement("DIV");
+    dynamicFilterDiv.id = "dynamicFilterDiv";
+    var selectDropDown = document.createElement("SELECT");
+    selectDropDown.id = "select_filter"
+    selectDropDown.name = "Select"
+
+    var columns = dataframe.listColumns();
+    var blankOption = this.createHTMLSelectOption("blankoption", "", "", "");
+
+    selectDropDown.appendChild(blankOption);
+    for (var i = 0; i< columns.length; i++)
+    {
+      var option = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      selectDropDown.appendChild(option);
+    }
+    dynamicFilterDiv.appendChild(selectDropDown);
+
+    var queryClause = document.createElement("INPUT");
+    queryClause.type = "text";
+    queryClause.id = "queryClause";
+
+    dynamicFilterDiv.appendChild(queryClause);
+
+    var submitFilterButton = document.createElement("BUTTON");
+    submitFilterButton.id = "filterButton";
+    submitFilterButton.appendChild(document.createTextNode("Filter"))
+
+    dynamicFilterDiv.appendChild(submitFilterButton);
+
+    var filterDiv = document.getElementById("filterDiv");
+    filterDiv.appendChild(dynamicFilterDiv);
+
+  }
+
   createHTMLTextBox(name, value, checked)
   {
     var checkboxloc = document.createElement('input');
@@ -78,5 +114,19 @@ class HTMLCanvasUtils {
     var brloc = document.createElement("BR");
 
     return brloc;
+  }
+
+
+
+  createHTMLSelectOption(id, name, value, label)
+  {
+    var option = document.createElement("option");
+    option.id = id;
+    option.name = name;
+    option.value = value;
+    option.label = label;
+    option.appendChild(document.createTextNode(name))
+
+    return option;
   }
 }

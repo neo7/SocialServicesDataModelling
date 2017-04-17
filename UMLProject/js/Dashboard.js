@@ -6,28 +6,26 @@ class Dashboard
       this.file_url = file_url;
       this.canvasUtil = new HTMLCanvasUtils();
       this.populateDashboard();
+
   }
 
   populateDashboard()
   {
-    this.createTable();
-    //this.createColumnFilters();
+    this.DataFrame.fromCSV(this.file_url).then(df => {
+    this.createTable(df);
+    this.createFilterPanel(df);
+    });
+
   }
 
-  createTable()
+  createTable(df)
   {
-    console.log(this.file_url);
-    this.DataFrame.fromCSV(this.file_url).then(df => {
     this.canvasUtil.createTableFromDataframe(df);
-    });
   }
-  createColumnFilters(){
-    console.log("creating filter for the columns");
+  createFilterPanel(dataframe){
+    console.log("creating filter panel for");
     console.log(this.file_url);
-    this.DataFrame.fromCSV(this.file_url).then(df => {
-    this.canvasUtil.createColumnFilters(df);
-    });
-
+    this.canvasUtil.createDropDownAndTextBox(dataframe);
   }
   createChartDashboard()
   {

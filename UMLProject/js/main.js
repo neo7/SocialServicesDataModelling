@@ -55,5 +55,8 @@ function clearDynamicContents()
   {
     table_element = document.getElementById("dataTable");
     table_element.parentNode.removeChild(table_element);
+    filter_elements = document.getElementById("dynamicFilterDiv");
+    filter_elements.parentNode.removeChild(filter_elements);
+
   }
 }
