@@ -14,6 +14,7 @@ class Dashboard
     this.DataFrame.fromCSV(this.file_url).then(df => {
     this.createTable(df);
     this.createFilterPanel(df);
+    this.createSqlFilterPanel(df);
     });
 
   }
@@ -27,6 +28,13 @@ class Dashboard
     console.log(this.file_url);
     this.canvasUtil.createDropDownAndTextBox(dataframe);
   }
+  createSqlFilterPanel(dataframe)
+  {
+    console.log("creating sql filter panel for");
+    console.log(this.file_url);
+    this.canvasUtil.createSqlFilterPanel(dataframe);
+  }
+
   createChartDashboard()
   {
 

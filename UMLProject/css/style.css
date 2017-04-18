@@ -125,6 +125,13 @@ Change here for dynamic contents with their div classes.
   left:220px;
   top:450px;
 }
+
+.main .navcontent .sqlFilter
+{
+  position: absolute;
+  left:220px;
+  top:480px;
+}
 .main .navcontent .rowFilter
 {
 

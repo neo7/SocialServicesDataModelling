@@ -38,7 +38,7 @@ class HTMLCanvasUtils {
 
 
 
-        var checkbox = this.createHTMLTextBox(columns[i], columns[i], true);
+        var checkbox = this.createHTMLCheckBox(columns[i], columns[i], true);
 
 
         headerTD.appendChild(this.createHTMLNewLine());
@@ -97,7 +97,28 @@ class HTMLCanvasUtils {
 
   }
 
-  createHTMLTextBox(name, value, checked)
+  createSqlFilterPanel(dataframe)
+  {
+    var dynamicSqlFilterDiv = document.createElement("DIV");
+    dynamicSqlFilterDiv.id = "dynamicSqlFilterDiv";
+
+    var sqlQueryTextBox = document.createElement("INPUT");
+    sqlQueryTextBox.type = "text";
+    sqlQueryTextBox.id = "sqlQueryTextBox";
+
+    var submitSqlFilterButton = document.createElement("BUTTON");
+    submitSqlFilterButton.id = "submitSqlFilterButton";
+    submitSqlFilterButton.appendChild(document.createTextNode("SQL Filter"));
+
+    dynamicSqlFilterDiv.appendChild(sqlQueryTextBox);
+    dynamicSqlFilterDiv.appendChild(submitSqlFilterButton);
+
+    var sqlFilterDiv = document.getElementById("sqlFilterDiv");
+    sqlFilterDiv.appendChild(dynamicSqlFilterDiv);
+
+
+  }
+  createHTMLCheckBox(name, value, checked)
   {
     var checkboxloc = document.createElement('input');
     checkboxloc.type = "checkbox";
