@@ -1,8 +1,8 @@
 class DataframeObject{
   constructor(dataframe)
   {
-    this.columns = dataFrame.listColumns();
-    this.rows = dataFrame.toArray()
+    this.columns = dataframe.listColumns();
+    this.rows = dataframe.toArray()
     this.dataframe = dataframe;
   }
 

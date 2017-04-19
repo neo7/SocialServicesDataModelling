@@ -57,6 +57,8 @@ function clearDynamicContents()
     table_element.parentNode.removeChild(table_element);
     filter_elements = document.getElementById("dynamicFilterDiv");
     filter_elements.parentNode.removeChild(filter_elements);
+    var sqlFilterDiv = document.getElementById("dynamicSqlFilterDiv");
+    sqlFilterDiv.parentNode.removeChild(sqlFilterDiv);
 
   }
 }

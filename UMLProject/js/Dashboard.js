@@ -2,26 +2,37 @@ class Dashboard
 {
   constructor(file_url)
   {
+    if (file_url != null)
+    {
       this.DataFrame = dfjs.DataFrame;
       this.file_url = file_url;
       this.canvasUtil = new HTMLCanvasUtils();
       this.populateDashboard();
-
+    }
+    else
+    {
+      this.canvasUtil = new HTMLCanvasUtils();
+    }
   }
 
   populateDashboard()
   {
     this.DataFrame.fromCSV(this.file_url).then(df => {
-    this.createTable(df);
-    this.createFilterPanel(df);
-    this.createSqlFilterPanel(df);
-    this.createFilterInstance(df);
+    this.createDashboardElements(df);
     });
 
   }
 
-  createTable(df)
+  createDashboardElements(df)
   {
+    this.createTable(df);
+    this.createFilterPanel(df);
+    this.createSqlFilterPanel(df);
+    this.createFilterInstance(df);
+  }
+
+  createTable(df)
+  { console.log("creating table");
     this.canvasUtil.createTableFromDataframe(df);
   }
   createFilterPanel(dataframe){
