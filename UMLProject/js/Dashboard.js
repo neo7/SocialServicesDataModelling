@@ -15,6 +15,7 @@ class Dashboard
     this.createTable(df);
     this.createFilterPanel(df);
     this.createSqlFilterPanel(df);
+    this.createFilterInstance(df);
     });
 
   }
@@ -33,6 +34,11 @@ class Dashboard
     console.log("creating sql filter panel for");
     console.log(this.file_url);
     this.canvasUtil.createSqlFilterPanel(dataframe);
+  }
+
+  createFilterInstance(dataframe)
+  {
+      this.filterUtil = new FilterHandler(dataframe);
   }
 
   createChartDashboard()
