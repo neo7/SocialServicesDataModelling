@@ -13,7 +13,7 @@ class ChartProto {
     		var result;
 
 			  var displayData = this.dataframe.select(this.selected_columnX, this.selected_columnY);
-				result = displayData.groupBy(this.selected_columnX).aggregate(group => group.sum(this.selected_columnX)); 
+				result = displayData.groupBy(this.selected_columnX).aggregate(group => group.count(this.selected_columnX)); 
 				console.log(result);
 
 				for(var j=0; j<result.select(this.selected_columnX).toArray().length; j++){
