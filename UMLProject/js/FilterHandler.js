@@ -21,6 +21,15 @@ class FilterHandler{
   filterButtonEventListener()
   {
     console.log("reached filter button log");
+
+    var checkboxValues = document.getElementsByClassName('columnCheckbox');
+    for (var i = 0; i< checkboxValues.length; i++)
+    {
+      if (checkboxValues[i].checked)
+      {
+        console.log(checkboxValues[i].value);
+      }
+    }
   }
 
   sqlFilterButtonEventListener()
@@ -30,7 +39,7 @@ class FilterHandler{
     var sql_statement = document.getElementById("sqlQueryTextBox").value;
     console.log(sql_statement);
 
-    this.DataFrame.sql.registerTable(this.dataframe, 'curr_table', true)
+    this.DataFrame.sql.registerTable(this.dataframe, 'table', true)
     // Request on Table
     var filteredDF = this.DataFrame.sql.request(sql_statement);
     filteredDF.show();
@@ -66,5 +75,19 @@ class FilterHandler{
     var dashboard = new Dashboard(null);
     dashboard.createDashboardElements(filteredDF);
   }
+
+  parseColumnsToString(columnCollection)
+  {
+
+  }
+  prepareWhereClause()
+  {
+    
+  }
+  prepareQueryStatement(columns, whereClause)
+  {
+
+  }
+
 
 }

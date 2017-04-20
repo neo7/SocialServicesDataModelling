@@ -38,7 +38,7 @@ class HTMLCanvasUtils {
 
 
 
-        var checkbox = this.createHTMLCheckBox(columns[i], columns[i], true);
+        var checkbox = this.createHTMLCheckBox(columns[i], columns[i], true, "columnCheckbox");
 
 
         headerTD.appendChild(this.createHTMLNewLine());
@@ -118,14 +118,15 @@ class HTMLCanvasUtils {
 
 
   }
-  createHTMLCheckBox(name, value, checked)
+  createHTMLCheckBox(name, value, checked, clazz)
   {
     var checkboxloc = document.createElement('input');
     checkboxloc.type = "checkbox";
     checkboxloc.name = name;
     checkboxloc.value = value;
-    checkboxloc.id = "id";
+    checkboxloc.id = value;
     checkboxloc.checked = true;
+    checkboxloc.className = clazz;
 
     return checkboxloc;
   }
@@ -149,5 +150,39 @@ class HTMLCanvasUtils {
     option.appendChild(document.createTextNode(name))
 
     return option;
+  }
+
+  createChartControls(dataframe)
+  {
+
+    var button = document.createElement("BUTTON");
+    button.id = "createChartButton";
+    button.appendChild(document.createTextNode("Create Chart"));
+
+    var visualizationDiv = document.getElementById("visualizationDiv");
+    var controlPanelDiv = document.createElement("DIV");
+    controlPanelDiv.id = "controlPanelDiv";
+    controlPanelDiv.appendChild(button);
+    visualizationDiv.appendChild(controlPanelDiv);
+  }
+
+  createVisualizationPanel(dataframe)
+  {
+    var chartDiv = document.createElement("DIV");
+    chartDiv.id = "chartDiv";
+    chartDiv.className = "chart";
+
+    var canvas = document.createElement("CANVAS");
+    canvas.id = "chartCanvas";
+    canvas.height="300";
+    canvas.width="600";
+    chartDiv.appendChild(canvas);
+
+    var visualizationDiv = document.getElementById("visualizationDiv");
+    visualizationDiv.appendChild(chartDiv);
+
+    console.log("created Div and canvas");
+
+
   }
 }

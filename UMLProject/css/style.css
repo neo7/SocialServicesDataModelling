@@ -138,7 +138,15 @@ Change here for dynamic contents with their div classes.
 }
 .main .navcontent .graphicalData
 {
+  position: absolute;
+  left:220px;
+  top:510px;
+}
 
+.main .navcontent .graphicalData .chartDiv .chartCanvas
+{
+  height: 500;
+  width: 700;
 }
 header {
    // padding: 35px 0;

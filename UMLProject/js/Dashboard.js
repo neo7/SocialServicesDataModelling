@@ -29,6 +29,7 @@ class Dashboard
     this.createFilterPanel(df);
     this.createSqlFilterPanel(df);
     this.createFilterInstance(df);
+    this.createChartDashboard(df);
   }
 
   createTable(df)
@@ -52,9 +53,24 @@ class Dashboard
       this.filterUtil = new FilterHandler(dataframe);
   }
 
-  createChartDashboard()
+  createChartDashboard(dataframe)
   {
+    this.createChartControls(dataframe);
+  }
 
+  createChartControls(dataframe)
+  {
+    this.canvasUtil.createChartControls(dataframe);
+    this.chartUtils = new ChartHandler(dataframe);
+  }
+
+  createVisualizationPanel(dataframe)
+  {
+    console.log("creating chart");
+    this.canvasUtil.createVisualizationPanel(dataframe);
+    this.chart = new ChartProto(dataframe, "bar", "chartCanvas", "Year", "HomeDelieveredMeals")
+    this.chart.createChart();
+    console.log("end creating chart");
   }
 
 }
