@@ -230,7 +230,35 @@ class HTMLCanvasUtils {
       yselectDropDown.appendChild(yoption);
     }
 
+    var yastackDropDown = document.createElement("SELECT");
+    yastackDropDown.id = "stack_ya"
+    yastackDropDown.name = "stack_ya"
+
+    var yastackBlankOption = this.createHTMLSelectOption("Stack-A-Y-Axis", "Stack-A-Y-Axis", "", "Stack-A-Y-Axis");
+
+    yastackDropDown.appendChild(yastackBlankOption);
+    for (var i = 0; i< columns.length; i++)
+    {
+      var yoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      yastackDropDown.appendChild(yoption);
+    }
+
+    var ybstackDropDown = document.createElement("SELECT");
+    ybstackDropDown.id = "stack_yb"
+    ybstackDropDown.name = "stack_yb"
+
+    var ybstackBlankOption = this.createHTMLSelectOption("Stack-B-Y-Axis", "Stack-B-Y-Axis", "", "Stack-B-Y-Axis");
+
+    ybstackDropDown.appendChild(ybstackBlankOption);
+    for (var i = 0; i< columns.length; i++)
+    {
+      var yoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      ybstackDropDown.appendChild(yoption);
+    }
+
     yAxisDiv.appendChild(yselectDropDown);
+    yAxisDiv.appendChild(yastackDropDown);
+    yAxisDiv.appendChild(ybstackDropDown);
     yAxisDiv.appendChild(this.createHTMLNewLine());
 
     var sumRadio = this.createHTMLRadio("yaxis", "sum", false, "sum", "Sum");
@@ -315,7 +343,6 @@ class HTMLCanvasUtils {
     visualizationDiv.appendChild(chartDiv);
 
     console.log("created Div and canvas");
-
 
   }
 }
