@@ -38,7 +38,7 @@ class HTMLCanvasUtils {
 
 
 
-        var checkbox = this.createHTMLCheckBox(columns[i], columns[i], true, "columnCheckbox");
+        var checkbox = this.createHTMLCheckBox(columns[i], columns[i], true, "columnCheckbox", false);
 
 
         headerTD.appendChild(this.createHTMLNewLine());
@@ -118,17 +118,31 @@ class HTMLCanvasUtils {
 
 
   }
-  createHTMLCheckBox(name, value, checked, clazz)
+  createHTMLCheckBox(name, value, checked, clazz, nameElement)
   {
     var checkboxloc = document.createElement('input');
     checkboxloc.type = "checkbox";
     checkboxloc.name = name;
     checkboxloc.value = value;
     checkboxloc.id = value;
-    checkboxloc.checked = true;
+    checkboxloc.checked = checked;
     checkboxloc.className = clazz;
 
     return checkboxloc;
+  }
+
+  createHTMLRadio(name, value, checked, clazz, label)
+  {
+    var radio = document.createElement('input');
+    radio.type = "radio";
+    radio.name = name;
+    radio.value = value;
+    radio.id = value;
+    radio.checked = checked;
+    radio.className = clazz;
+    radio.label = label;
+
+    return radio;
   }
 
   createHTMLNewLine()
@@ -154,6 +168,122 @@ class HTMLCanvasUtils {
 
   createChartControls(dataframe)
   {
+    var selectChart = document.createElement("SELECT");
+    selectChart.id = "select_chart"
+    selectChart.name = "select_chart"
+
+    var lineChartOption = this.createHTMLSelectOption("lineChartOption", "Line Chart", "line", "lineChartOption");
+    var barChartOption = this.createHTMLSelectOption("barChartOption", "Bar Chart", "bar", "barChartOption");
+    var pieChartOption = this.createHTMLSelectOption("pieChartOption", "Pie Chart", "pie", "pieChartOption");
+    var stackedChartOption = this.createHTMLSelectOption("stackedChartOption", "Stacked Chart", "bar", "stackedChartOption");
+    var radarChartOption = this.createHTMLSelectOption("radarChartOption", "Radar Chart", "radar", "radarChartOption");
+
+    var blankOption = this.createHTMLSelectOption("Select Chart Type", "Select Chart Type", "", "");
+
+    selectChart.appendChild(blankOption);
+    selectChart.appendChild(lineChartOption);
+    selectChart.appendChild(barChartOption);
+    selectChart.appendChild(pieChartOption);
+    selectChart.appendChild(stackedChartOption);
+    selectChart.appendChild(radarChartOption);
+
+
+    var xAxisDiv = document.createElement("DIV");
+    xAxisDiv.id = "xAxisDiv";
+    var xselectDropDown = document.createElement("SELECT");
+    xselectDropDown.id = "select_x"
+    xselectDropDown.name = "select_x"
+
+    var columns = dataframe.listColumns();
+    var xblankOption = this.createHTMLSelectOption("X-Axis", "X-Axis", "X-Axis", "X-Axis");
+
+    xselectDropDown.appendChild(xblankOption);
+    for (var i = 0; i< columns.length; i++)
+    {
+      var xoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      xselectDropDown.appendChild(xoption);
+    }
+
+    xAxisDiv.appendChild(xselectDropDown);
+
+    var frequencyCheckbox = this.createHTMLCheckBox("xaxis", "frequency", false, "frequency", "Frequency");
+
+    var frequencyLabel = document.createElement("LABEL");
+    frequencyLabel.for ="frequency";
+    frequencyLabel.appendChild(document.createTextNode("Frequency"));
+
+    xAxisDiv.appendChild(frequencyLabel);
+    xAxisDiv.appendChild(frequencyCheckbox);
+
+    var yAxisDiv = document.createElement("DIV");
+    yAxisDiv.id = "yAxisDiv";
+    var yselectDropDown = document.createElement("SELECT");
+    yselectDropDown.id = "select_y"
+    yselectDropDown.name = "select_y"
+
+    var yblankOption = this.createHTMLSelectOption("Y-Axis", "Y-Axis", "Y-Axis", "Y-Axis");
+
+    yselectDropDown.appendChild(yblankOption);
+    for (var i = 0; i< columns.length; i++)
+    {
+      var yoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      yselectDropDown.appendChild(yoption);
+    }
+
+    yAxisDiv.appendChild(yselectDropDown);
+    yAxisDiv.appendChild(this.createHTMLNewLine());
+
+    var sumRadio = this.createHTMLRadio("yaxis", "sum", false, "sum", "Sum");
+    var meanRadio = this.createHTMLRadio("yaxis", "mean", false, "mean", "Mean");
+    var sdRadio = this.createHTMLRadio("yaxis", "sd", false, "sd", "Std Deviation");
+    var maxRadio = this.createHTMLRadio("yaxis", "max", false, "max", "Max");
+    var minRadio = this.createHTMLRadio("yaxis", "min", false, "min", "Min");
+    var averageRadio = this.createHTMLRadio("yaxis", "average", false, "average", "Average");
+
+    var sumLabel = document.createElement("LABEL");
+    sumLabel.for ="sum";
+    sumLabel.appendChild(document.createTextNode("Sum"));
+
+    var meanLabel = document.createElement("LABEL");
+    meanLabel.for ="mean";
+    meanLabel.appendChild(document.createTextNode("Mean"));
+
+    var sdLabel = document.createElement("LABEL");
+    sdLabel.for ="sd";
+    sdLabel.appendChild(document.createTextNode("Std Deviation"));
+
+    var maxLabel = document.createElement("LABEL");
+    maxLabel.for ="max";
+    maxLabel.appendChild(document.createTextNode("Maximum"));
+
+    var minLabel = document.createElement("LABEL");
+    minLabel.for ="min";
+    minLabel.appendChild(document.createTextNode("Minimum"));
+
+    var averageLabel = document.createElement("LABEL");
+    averageLabel.for ="average";
+    averageLabel.appendChild(document.createTextNode("Average"));
+
+    yAxisDiv.appendChild(sumLabel);
+    yAxisDiv.appendChild(sumRadio);
+
+    yAxisDiv.appendChild(meanLabel);
+    yAxisDiv.appendChild(meanRadio);
+    yAxisDiv.appendChild(this.createHTMLNewLine());
+
+    yAxisDiv.appendChild(sdLabel);
+    yAxisDiv.appendChild(sdRadio);
+
+    yAxisDiv.appendChild(maxLabel);
+    yAxisDiv.appendChild(maxRadio);
+    yAxisDiv.appendChild(this.createHTMLNewLine());
+
+    yAxisDiv.appendChild(minLabel);
+    yAxisDiv.appendChild(minRadio);
+
+    yAxisDiv.appendChild(averageLabel);
+    yAxisDiv.appendChild(averageRadio);
+    yAxisDiv.appendChild(this.createHTMLNewLine());
 
     var button = document.createElement("BUTTON");
     button.id = "createChartButton";
@@ -162,6 +292,9 @@ class HTMLCanvasUtils {
     var visualizationDiv = document.getElementById("visualizationDiv");
     var controlPanelDiv = document.createElement("DIV");
     controlPanelDiv.id = "controlPanelDiv";
+    controlPanelDiv.appendChild(selectChart);
+    controlPanelDiv.appendChild(xAxisDiv);
+    controlPanelDiv.appendChild(yAxisDiv);
     controlPanelDiv.appendChild(button);
     visualizationDiv.appendChild(controlPanelDiv);
   }

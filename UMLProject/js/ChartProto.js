@@ -1,30 +1,15 @@
 class ChartProto {
-	constructor(dataframe, chart_type, chart_div, selected_columnX, selected_columnY) {
+	constructor(dataframe, chart_type, chart_div, chartColumns, chartValues) {
        this.dataframe = dataframe;
        this.chart_type = chart_type;
        this.chart_div = chart_div;
-       this.selected_columnX = selected_columnX;
-       this.selected_columnY = selected_columnY;
+       this.selected_columnX = chartColumns;
+       this.selected_columnY = chartValues;
     }
 
 		createChart(){
-				var chartColumns = [];
-    		var chartValues = [];
-    		var result;
-
-			  var displayData = this.dataframe.select(this.selected_columnX, this.selected_columnY);
-				result = displayData.groupBy(this.selected_columnX).aggregate(group => group.count(this.selected_columnX)); 
-				console.log(result);
-
-				for(var j=0; j<result.select(this.selected_columnX).toArray().length; j++){
-						chartColumns[j] = result.select(this.selected_columnX).toArray()[j][0];
-				}
-				console.log(chartColumns);
-
-				for(var i=0; i<result.select('aggregation').toArray().length; i++){
-						chartValues[i] = result.select('aggregation').toArray()[i][0];
-				}
-				console.log(chartValues);
+				var chartColumns = this.selected_columnX;
+    		var chartValues = this.selected_columnY;
 
 			  var ctx = document.getElementById(this.chart_div);
 				var myChart = new Chart(ctx, {
@@ -63,7 +48,7 @@ class ChartProto {
 		               // type: 'linear',
 		               position: 'bottom',
 		               // display: false
-		               //stacked:true,
+		                stacked:true,
 		                ticks: {
 		                    min: 1,
 		                    max: 1000

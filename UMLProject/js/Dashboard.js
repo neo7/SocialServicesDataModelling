@@ -64,13 +64,5 @@ class Dashboard
     this.chartUtils = new ChartHandler(dataframe);
   }
 
-  createVisualizationPanel(dataframe)
-  {
-    console.log("creating chart");
-    this.canvasUtil.createVisualizationPanel(dataframe);
-    this.chart = new ChartProto(dataframe, "bar", "chartCanvas", "Year", "HomeDelieveredMeals")
-    this.chart.createChart();
-    console.log("end creating chart");
-  }
 
 }
