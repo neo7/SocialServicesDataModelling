@@ -34,8 +34,11 @@ class FilterHandler{
     var selection_clause = this.parseColumnsToString(select_columns);
     var selectFilterElement = document.getElementById("select_filter");
     var subject = selectFilterElement.options[selectFilterElement.selectedIndex].value;
+
+    var comparisonElement = document.getElementById("select_comparison");
+    var comparison = comparisonElement.options[comparisonElement.selectedIndex].value;
     var predicate = document.getElementById("queryClause").value;
-    var sql_statement = selection_clause + subject + predicate;
+    var sql_statement = selection_clause + subject + comparison + predicate;
 
     this.executeSQLQuery(sql_statement);
   }
@@ -44,8 +47,7 @@ class FilterHandler{
   {
     console.log("reached the sql filter")
     var sql_statement = document.getElementById("sqlQueryTextBox").value;
-    chartDropdownElement.options[chartDropdownElement.selectedIndex].value;
-    executeSQLQuery(sql_statement)
+    this.executeSQLQuery(sql_statement)
 
   }
 

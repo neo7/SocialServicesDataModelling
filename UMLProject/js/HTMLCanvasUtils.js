@@ -69,8 +69,12 @@ class HTMLCanvasUtils {
     selectDropDown.id = "select_filter"
     selectDropDown.name = "Select"
 
+    var selectDropDownComparison = document.createElement("SELECT");
+    selectDropDownComparison.id = "select_comparison";
+    selectDropDownComparison.name = "select comparison";
+
     var columns = dataframe.listColumns();
-    var blankOption = this.createHTMLSelectOption("blankoption", "", "", "");
+    var blankOption = this.createHTMLSelectOption("blankoption", "Select Filter", "", "");
 
     selectDropDown.appendChild(blankOption);
     for (var i = 0; i< columns.length; i++)
@@ -78,7 +82,17 @@ class HTMLCanvasUtils {
       var option = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
       selectDropDown.appendChild(option);
     }
+    var blankcpz = this.createHTMLSelectOption("blankoption", "", "", "");
+    var gt = this.createHTMLSelectOption("gt", ">", ">", ">");
+    var lt = this.createHTMLSelectOption("lt", "<", "<", "<");
+    var eq = this.createHTMLSelectOption("eq", "=", "=", "=");
+
+    selectDropDownComparison.appendChild(eq);
+    selectDropDownComparison.appendChild(lt);
+    selectDropDownComparison.appendChild(gt);
+
     dynamicFilterDiv.appendChild(selectDropDown);
+    dynamicFilterDiv.appendChild(selectDropDownComparison);
 
     var queryClause = document.createElement("INPUT");
     queryClause.type = "text";
