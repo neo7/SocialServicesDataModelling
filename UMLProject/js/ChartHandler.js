@@ -85,6 +85,10 @@ class ChartHandler
 
     var axisElement = document.getElementById(id);
     var axisValue = axisElement.options[axisElement.selectedIndex].value;
+    if(axisValue == "null")
+    {
+      return null;
+    }
     return axisValue;
   }
 

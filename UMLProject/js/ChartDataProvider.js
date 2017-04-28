@@ -1,6 +1,6 @@
 let instanceChartDataProvider = null;
 class ChartDataProvider{
-  constructo(){
+  varructo(){
     if (!instanceChartDataProvider) {
           instanceChartDataProvider = this;
         }
@@ -8,42 +8,44 @@ class ChartDataProvider{
 
   getDefaultChartData(x, y, ya, yb, dataframe)
   {
-    const groupDF = dataframe.select(x, y, ya, yb);
+    var groupDF = dataframe.select(x, y, ya, yb);
     return this.createChartDataObject(groupDF);
   }
   getGroupFrequencyChartData(x, dataframe)
   {
-    const groupDF = dataframe.groupBy(x).aggregate(group =>group.count());
-    const renamedDF = groupDF.rename('aggregation', 'Frequency');
+    var groupDF = dataframe.groupBy(x).aggregate(group =>group.count());
+    var renamedDF = groupDF.rename('aggregation', 'Frequency');
     return this.createChartDataObject(renamedDF);
   }
 
   getGroupSumChartData(x, y, ya, yb, dataframe)
   {
-    const groupY = dataframe.groupBy(x).aggregate(group =>group.stat.sum(y));
-    const groupYRen = groupY.rename('aggregation', y);
+    var groupYARen = null;
+    var groupYBRen = null;
+    var groupY = dataframe.groupBy(x).aggregate(group =>group.stat.sum(y));
+    var groupYRen = groupY.rename('aggregation', y);
 
     if (ya!=null)
     {
-      const groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.sum(ya));
-      const groupYARen = groupYA.rename('aggregation', ya);
+      var groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.sum(ya));
+      groupYARen = groupYA.rename('aggregation', ya);
     }
 
     if (yb!=null)
     {
-      const groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.sum(yb));
-      const groupYBRen = groupYB.rename('aggregation', yb);
+      var groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.sum(yb));
+      groupYBRen = groupYB.rename('aggregation', yb);
     }
 
     if(ya != null && yb != null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
-      const innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
       return this.createChartDataObject(innerJoinB);
     }
     else if (ya != null && yb == null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
       return this.createChartDataObject(innerJoinA);
     }
     else
@@ -55,30 +57,32 @@ class ChartDataProvider{
 
   getGroupMeanChartData(x, y, ya, yb, dataframe)
   {
-    const groupY = dataframe.groupBy(x).aggregate(group =>group.stat.mean(y));
-    const groupYRen = groupY.rename('aggregation', y);
+    var groupYARen = null;
+    var groupYBRen = null;
+    var groupY = dataframe.groupBy(x).aggregate(group =>group.stat.mean(y));
+    var groupYRen = groupY.rename('aggregation', y);
 
     if (ya!=null)
     {
-      const groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.mean(ya));
-      const groupYARen = groupYA.rename('aggregation', ya);
+      var groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.mean(ya));
+      var groupYARen = groupYA.rename('aggregation', ya);
     }
 
     if (yb!=null)
     {
-      const groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.mean(yb));
-      const groupYBRen = groupYB.rename('aggregation', yb);
+      var groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.mean(yb));
+      var groupYBRen = groupYB.rename('aggregation', yb);
     }
 
     if(ya != null && yb != null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
-      const innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
       return this.createChartDataObject(innerJoinB);
     }
     else if (ya != null && yb == null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
       return this.createChartDataObject(innerJoinA);
     }
     else
@@ -89,30 +93,32 @@ class ChartDataProvider{
 
   getGroupMinChartData(x, y, ya, yb, dataframe)
   {
-    const groupY = dataframe.groupBy(x).aggregate(group =>group.stat.min(y));
-    const groupYRen = groupY.rename('aggregation', y);
+    var groupYARen = null;
+    var groupYBRen = null;
+    var groupY = dataframe.groupBy(x).aggregate(group =>group.stat.min(y));
+    var groupYRen = groupY.rename('aggregation', y);
 
     if (ya!=null)
     {
-      const groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.min(ya));
-      const groupYARen = groupYA.rename('aggregation', ya);
+      var groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.min(ya));
+      var groupYARen = groupYA.rename('aggregation', ya);
     }
 
     if (yb!=null)
     {
-      const groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.min(yb));
-      const groupYBRen = groupYB.rename('aggregation', yb);
+      var groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.min(yb));
+      var groupYBRen = groupYB.rename('aggregation', yb);
     }
 
     if(ya != null && yb != null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
-      const innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
       return this.createChartDataObject(innerJoinB);
     }
     else if (ya != null && yb == null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
       return this.createChartDataObject(innerJoinA);
     }
     else
@@ -120,32 +126,72 @@ class ChartDataProvider{
       return this.createChartDataObject(groupYRen);
     }
   }
-  getGroupSDChartData(x, y, ya, yb, dataframe)
+
+  getGroupMaxChartData(x, y, ya, yb, dataframe)
   {
-    const groupY = dataframe.groupBy(x).aggregate(group =>group.stat.sd(y));
-    const groupYRen = groupY.rename('aggregation', y);
+    var groupYARen = null;
+    var groupYBRen = null;
+    var groupY = dataframe.groupBy(x).aggregate(group =>group.stat.max(y));
+    var groupYRen = groupY.rename('aggregation', y);
 
     if (ya!=null)
     {
-      const groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.sd(ya));
-      const groupYARen = groupYA.rename('aggregation', ya);
+      var groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.max(ya));
+      var groupYARen = groupYA.rename('aggregation', ya);
     }
 
     if (yb!=null)
     {
-      const groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.sd(yb));
-      const groupYBRen = groupYB.rename('aggregation', yb);
+      var groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.max(yb));
+      var groupYBRen = groupYB.rename('aggregation', yb);
     }
 
     if(ya != null && yb != null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
-      const innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
       return this.createChartDataObject(innerJoinB);
     }
     else if (ya != null && yb == null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      return this.createChartDataObject(innerJoinA);
+    }
+    else
+    {
+      return this.createChartDataObject(groupYRen);
+    }
+  }
+
+
+  getGroupSDChartData(x, y, ya, yb, dataframe)
+  {
+    var groupYARen = null;
+    var groupYBRen = null;
+    var groupY = dataframe.groupBy(x).aggregate(group =>group.stat.sd(y));
+    var groupYRen = groupY.rename('aggregation', y);
+
+    if (ya!=null)
+    {
+      var groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.sd(ya));
+      var groupYARen = groupYA.rename('aggregation', ya);
+    }
+
+    if (yb!=null)
+    {
+      var groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.sd(yb));
+      var groupYBRen = groupYB.rename('aggregation', yb);
+    }
+
+    if(ya != null && yb != null)
+    {
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
+      return this.createChartDataObject(innerJoinB);
+    }
+    else if (ya != null && yb == null)
+    {
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
       return this.createChartDataObject(innerJoinA);
     }
     else
@@ -156,30 +202,32 @@ class ChartDataProvider{
 
   getGroupAverageChartData(x, y, ya, yb, dataframe)
   {
-    const groupY = dataframe.groupBy(x).aggregate(group =>group.stat.average(y));
-    const groupYRen = groupY.rename('aggregation', y);
+    var groupYARen = null;
+    var groupYBRen = null;
+    var groupY = dataframe.groupBy(x).aggregate(group =>group.stat.average(y));
+    var groupYRen = groupY.rename('aggregation', y);
 
     if (ya!=null)
     {
-      const groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.average(ya));
-      const groupYARen = groupYA.rename('aggregation', ya);
+      var groupYA = dataframe.groupBy(x).aggregate(group =>group.stat.average(ya));
+      groupYARen = groupYA.rename('aggregation', ya);
     }
 
     if (yb!=null)
     {
-      const groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.average(yb));
-      const groupYBRen = groupYB.rename('aggregation', yb);
+      var groupYB = dataframe.groupBy(x).aggregate(group =>group.stat.average(yb));
+      groupYBRen = groupYB.rename('aggregation', yb);
     }
 
     if(ya != null && yb != null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
-      const innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinB = innerJoinA.join(groupYBRen, x, 'inner');
       return this.createChartDataObject(innerJoinB);
     }
     else if (ya != null && yb == null)
     {
-      const innerJoinA = groupYRen.join(groupYARen, x, 'inner');
+      var innerJoinA = groupYRen.join(groupYARen, x, 'inner');
       return this.createChartDataObject(innerJoinA);
     }
     else
