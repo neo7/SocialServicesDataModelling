@@ -23,29 +23,40 @@ class FilterHandler{
     console.log("reached filter button log");
 
     var checkboxValues = document.getElementsByClassName('columnCheckbox');
+    var select_columns = [];
     for (var i = 0; i< checkboxValues.length; i++)
     {
       if (checkboxValues[i].checked)
       {
-        console.log(checkboxValues[i].value);
+        select_columns.push(checkboxValues[i].value);
       }
     }
+    var selection_clause = this.parseColumnsToString(select_columns);
+    var selectFilterElement = document.getElementById("select_filter");
+    var subject = selectFilterElement.options[selectFilterElement.selectedIndex].value;
+    var predicate = document.getElementById("queryClause").value;
+    var sql_statement = selection_clause + subject + predicate;
+
+    this.executeSQLQuery(sql_statement);
   }
 
   sqlFilterButtonEventListener()
   {
     console.log("reached the sql filter")
-
     var sql_statement = document.getElementById("sqlQueryTextBox").value;
-    console.log(sql_statement);
+    chartDropdownElement.options[chartDropdownElement.selectedIndex].value;
+    executeSQLQuery(sql_statement)
 
+  }
+
+  executeSQLQuery(sql_statement)
+  {
     this.DataFrame.sql.registerTable(this.dataframe, 'table', true)
     // Request on Table
     var filteredDF = this.DataFrame.sql.request(sql_statement);
     filteredDF.show();
 
     this.postfilterActivity(filteredDF)
-
   }
 
   postfilterActivity(filteredDF)
@@ -78,11 +89,24 @@ class FilterHandler{
 
   parseColumnsToString(columnCollection)
   {
-
+    var selection_string = "select ";
+    const blank_space = " ";
+    const comma = ","
+    for (var i = 0; i<columnCollection.length; i++)
+    {
+      if(i == columnCollection.length-1)
+      {
+        selection_string = selection_string+columnCollection[i]+blank_space;
+      } else {
+          selection_string = selection_string+columnCollection[i]+comma+blank_space;
+      }
+    }
+    selection_string = selection_string + "from table where ";
+    return selection_string;
   }
   prepareWhereClause()
   {
-    
+
   }
   prepareQueryStatement(columns, whereClause)
   {
