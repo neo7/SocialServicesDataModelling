@@ -1,6 +1,6 @@
 let instanceChartDataProvider = null;
 class ChartDataProvider{
-  varructo(){
+  constructor(){
     if (!instanceChartDataProvider) {
           instanceChartDataProvider = this;
         }
