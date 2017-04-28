@@ -231,10 +231,10 @@ class HTMLCanvasUtils {
     }
 
     var yastackDropDown = document.createElement("SELECT");
-    yastackDropDown.id = "stack_ya"
-    yastackDropDown.name = "stack_ya"
+    yastackDropDown.id = "select_ya"
+    yastackDropDown.name = "select_ya"
 
-    var yastackBlankOption = this.createHTMLSelectOption("Stack-A-Y-Axis", "Stack-A-Y-Axis", "", "Stack-A-Y-Axis");
+    var yastackBlankOption = this.createHTMLSelectOption("Stack-A-Y-Axis", "Stack-A-Y-Axis", null, "Stack-A-Y-Axis");
 
     yastackDropDown.appendChild(yastackBlankOption);
     for (var i = 0; i< columns.length; i++)
@@ -244,10 +244,10 @@ class HTMLCanvasUtils {
     }
 
     var ybstackDropDown = document.createElement("SELECT");
-    ybstackDropDown.id = "stack_yb"
-    ybstackDropDown.name = "stack_yb"
+    ybstackDropDown.id = "select_yb"
+    ybstackDropDown.name = "select_yb"
 
-    var ybstackBlankOption = this.createHTMLSelectOption("Stack-B-Y-Axis", "Stack-B-Y-Axis", "", "Stack-B-Y-Axis");
+    var ybstackBlankOption = this.createHTMLSelectOption("Stack-B-Y-Axis", "Stack-B-Y-Axis", null, "Stack-B-Y-Axis");
 
     ybstackDropDown.appendChild(ybstackBlankOption);
     for (var i = 0; i< columns.length; i++)

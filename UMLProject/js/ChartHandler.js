@@ -19,6 +19,10 @@ class ChartHandler
     var chartType = this.getChartType();
     var xAxisColumn = this.getAxisValue("x");
     var yAxisColumn = this.getAxisValue("y");
+
+    var yAStackColumn = this.getAxisValue("ya");
+    var yBStackColumn = this.getAxisValue("yb");
+
     var chartoption = this.getChartOption();
 
     var chartDataProvider = new ChartDataProvider()
@@ -26,7 +30,7 @@ class ChartHandler
     switch (chartoption)
     {
       case 'default':
-      chartData = chartDataProvider.getDefaultChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getDefaultChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
       case 'frequency':
@@ -34,27 +38,27 @@ class ChartHandler
       break;
 
       case 'sum':
-      chartData = chartDataProvider.getGroupSumChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getGroupSumChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
       case 'mean':
-      chartData = chartDataProvider.getGroupMeanChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getGroupMeanChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
       case 'sd':
-      chartData = chartDataProvider.getGroupSDChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getGroupSDChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
       case 'max':
-      chartData = chartDataProvider.getGroupMaxChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getGroupMaxChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
       case 'min':
-      chartData = chartDataProvider.getGroupMinChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getGroupMinChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
       case 'average':
-      chartData = chartDataProvider.getGroupAverageChartData(xAxisColumn, yAxisColumn, dataframe);
+      chartData = chartDataProvider.getGroupAverageChartData(xAxisColumn, yAxisColumn, yAStackColumn, yBStackColumn, dataframe);
       break;
 
     }
@@ -75,15 +79,9 @@ class ChartHandler
 
   getAxisValue(axis)
   {
-    var id = null;
-    if (axis == "x")
-    {
-      id = "select_x";
-    }
-    else
-    {
-      id = "select_y";
-    }
+
+    var id = "select_"+ axis;
+
 
     var axisElement = document.getElementById(id);
     var axisValue = axisElement.options[axisElement.selectedIndex].value;
