@@ -8,7 +8,19 @@ class ChartDataProvider{
 
   getDefaultChartData(x, y, ya, yb, dataframe)
   {
-    var groupDF = dataframe.select(x, y, ya, yb);
+    var groupDF = null;
+    if (ya != null && yb == null)
+    {
+      groupDF = dataframe.select(x, y, ya);
+    } else if (yb != null && ya == null)
+    {
+      groupDF = dataframe.select(x, y, yb);
+    }else if(ya != null && yb != null)
+    {
+      groupDF = dataframe.select(x, y, ya, yb);
+    } else {
+      groupDF = dataframe.select(x, y);
+    }
     return this.createChartDataObject(groupDF);
   }
   getGroupFrequencyChartData(x, dataframe)
