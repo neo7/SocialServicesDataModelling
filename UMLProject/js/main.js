@@ -1,71 +1,66 @@
-function openNav() {
-    document.getElementById("mySidenav").style.width = "200px";
-}
+class Main{
+  constructor(){
+    this.datasetKVObject = new DatasetFileURLs()
+    this.openNavLink = document.getElementById("openNav");
+    this.closeNavLink = document.getElementById("closeNav");
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+    this.senior_service_meal = document.getElementById("senior_service_meal");
+    this.education_progress = document.getElementById("education_progress");
+    this.senior_centers = document.getElementById("senior_centers");
+    this.business_funds = document.getElementById("business_funds");
+    this.public_health = document.getElementById("public_health");
 
-var datasetKVObject = new DatasetFileURLs()
+    this.openNavLink.addEventListener("click", evt => this.openNav(evt));
+    this.closeNavLink.addEventListener("click", evt => this.closeNav(evt));
 
-var senior_service_meal = document.getElementById("senior_service_meal");
-var education_progress = document.getElementById("education_progress");
-var senior_centers = document.getElementById("senior_centers");
-var business_funds = document.getElementById("business_funds");
-var public_health = document.getElementById("public_health");
-
-senior_service_meal.addEventListener("click", function(){
-  clearDynamicContents()
-  populateDashboard(datasetKVObject.getFileURL(senior_service_meal.id))
-  closeNav()
-});
-
-senior_centers.addEventListener("click", function(){
-  clearDynamicContents()
-  populateDashboard(datasetKVObject.getFileURL(senior_centers.id))
-  closeNav()
-});
-
-education_progress.addEventListener("click", function(){
-  clearDynamicContents()
-  populateDashboard(datasetKVObject.getFileURL(education_progress.id))
-  closeNav()
-});
-
-business_funds.addEventListener("click", function(){
-  clearDynamicContents()
-  populateDashboard(datasetKVObject.getFileURL(business_funds.id))
-  closeNav()
-});
-
-public_health.addEventListener("click", function(){
-  clearDynamicContents()
-  populateDashboard(datasetKVObject.getFileURL(public_health.id))
-  closeNav()
-});
-
-
-function populateDashboard(value){
-  var dashboard = new Dashboard(value);
-}
-
-function clearDynamicContents()
-{
-  if (document.getElementById("dataTable") != undefined && document.getElementById("dataTable") != null)
-  {
-    var table_element = document.getElementById("dataTable");
-    table_element.parentNode.removeChild(table_element);
-    var filter_elements = document.getElementById("dynamicFilterDiv");
-    filter_elements.parentNode.removeChild(filter_elements);
-    var sqlFilterDiv = document.getElementById("dynamicSqlFilterDiv");
-    sqlFilterDiv.parentNode.removeChild(sqlFilterDiv);
-    var controlPanelDiv = document.getElementById("controlPanelDiv");
-    controlPanelDiv.parentNode.removeChild(controlPanelDiv);
-
-    if(document.getElementById("chartDiv")!= null && document.getElementById("chartDiv")!= undefined){
-      var chartDiv = document.getElementById("chartDiv");
-      chartDiv.parentNode.removeChild(chartDiv);
-    }  
-
+    this.senior_service_meal.addEventListener("click", evt => this.datasetEventListener(this.senior_service_meal.id));
+    this.education_progress.addEventListener("click", evt => this.datasetEventListener(this.education_progress.id));
+    this.senior_centers.addEventListener("click", evt => this.datasetEventListener(this.senior_centers.id));
+    this.business_funds.addEventListener("click", evt => this.datasetEventListener(this.business_funds.id));
+    this.public_health.addEventListener("click", evt => this.datasetEventListener(this.public_health.id));
   }
+
+  openNav() {
+      document.getElementById("mySidenav").style.width = "200px";
+  }
+
+  closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+
+
+
+  datasetEventListener(datasetId){
+    this.clearDynamicContents()
+    this.populateDashboard(this.datasetKVObject.getFileURL(datasetId))
+    this.closeNav()
+  }
+
+  populateDashboard(value){
+    var dashboard = new Dashboard(value);
+  }
+
+  clearDynamicContents()
+  {
+    if (document.getElementById("dataTable") != undefined && document.getElementById("dataTable") != null)
+    {
+      var table_element = document.getElementById("dataTable");
+      table_element.parentNode.removeChild(table_element);
+      var filter_elements = document.getElementById("dynamicFilterDiv");
+      filter_elements.parentNode.removeChild(filter_elements);
+      var sqlFilterDiv = document.getElementById("dynamicSqlFilterDiv");
+      sqlFilterDiv.parentNode.removeChild(sqlFilterDiv);
+      var controlPanelDiv = document.getElementById("controlPanelDiv");
+      controlPanelDiv.parentNode.removeChild(controlPanelDiv);
+
+      if(document.getElementById("chartDiv")!= null && document.getElementById("chartDiv")!= undefined){
+        var chartDiv = document.getElementById("chartDiv");
+        chartDiv.parentNode.removeChild(chartDiv);
+      }
+
+    }
+  }
+
 }
+
+var mainInstance = new Main();
