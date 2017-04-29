@@ -11,6 +11,10 @@ class ChartHandler
   createChartButtonHandler(evt)
   {
     console.log("inside chart control button handler");
+    if(document.getElementById("chartDiv")!= null && document.getElementById("chartDiv")!= undefined){
+      var chartDiv = document.getElementById("chartDiv");
+      chartDiv.parentNode.removeChild(chartDiv);
+    }
     this.createVisualizationPanel(this.dataframe);
   }
 
@@ -65,8 +69,8 @@ class ChartHandler
 
     console.log("creating chart");
     this.canvasUtil.createVisualizationPanel(dataframe);
-    this.chart = new ChartProto(dataframe, chartType, "chartCanvas", chartData.getXArray(), chartData.getYArray())
-    this.chart.createChart();
+    this.chart = new GenericChart(chartData.getXArray(),chartData.getYArray(),chartData.getYLabel())
+    this.chart.createChart(chartType);
     console.log("end creating chart");
   }
 

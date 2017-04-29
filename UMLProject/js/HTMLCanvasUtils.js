@@ -69,9 +69,15 @@ class HTMLCanvasUtils {
     selectDropDown.id = "select_filter"
     selectDropDown.name = "Select"
 
+    selectDropDown.setAttribute("class", "dropdown_l");
+
+
     var selectDropDownComparison = document.createElement("SELECT");
     selectDropDownComparison.id = "select_comparison";
     selectDropDownComparison.name = "select comparison";
+
+    selectDropDownComparison.setAttribute("class", "dropdown_s");
+
 
     var columns = dataframe.listColumns();
     var blankOption = this.createHTMLSelectOption("blankoption", "Select Filter", "", "");
@@ -185,6 +191,8 @@ class HTMLCanvasUtils {
     var selectChart = document.createElement("SELECT");
     selectChart.id = "select_chart"
     selectChart.name = "select_chart"
+    selectChart.setAttribute("class", "dropdown_l");
+
 
     var lineChartOption = this.createHTMLSelectOption("lineChartOption", "Line Chart", "line", "lineChartOption");
     var barChartOption = this.createHTMLSelectOption("barChartOption", "Bar Chart", "bar", "barChartOption");
@@ -207,6 +215,8 @@ class HTMLCanvasUtils {
     var xselectDropDown = document.createElement("SELECT");
     xselectDropDown.id = "select_x"
     xselectDropDown.name = "select_x"
+    xselectDropDown.setAttribute("class", "dropdown_l");
+
 
     var columns = dataframe.listColumns();
     var xblankOption = this.createHTMLSelectOption("X-Axis", "X-Axis", "X-Axis", "X-Axis");
@@ -234,6 +244,8 @@ class HTMLCanvasUtils {
     var yselectDropDown = document.createElement("SELECT");
     yselectDropDown.id = "select_y"
     yselectDropDown.name = "select_y"
+    yselectDropDown.setAttribute("class", "dropdown_l");
+
 
     var yblankOption = this.createHTMLSelectOption("Y-Axis", "Y-Axis", "Y-Axis", "Y-Axis");
 
@@ -247,6 +259,8 @@ class HTMLCanvasUtils {
     var yastackDropDown = document.createElement("SELECT");
     yastackDropDown.id = "select_ya"
     yastackDropDown.name = "select_ya"
+    yastackDropDown.setAttribute("class", "dropdown_l");
+
 
     var yastackBlankOption = this.createHTMLSelectOption("Stack-A-Y-Axis", "Stack-A-Y-Axis", null, "Stack-A-Y-Axis");
 
@@ -260,6 +274,8 @@ class HTMLCanvasUtils {
     var ybstackDropDown = document.createElement("SELECT");
     ybstackDropDown.id = "select_yb"
     ybstackDropDown.name = "select_yb"
+    ybstackDropDown.setAttribute("class", "dropdown_l");
+
 
     var ybstackBlankOption = this.createHTMLSelectOption("Stack-B-Y-Axis", "Stack-B-Y-Axis", null, "Stack-B-Y-Axis");
 
@@ -307,28 +323,65 @@ class HTMLCanvasUtils {
     averageLabel.appendChild(document.createTextNode("Average"));
 
     yAxisDiv.appendChild(sumLabel);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode ("  "));
+    // Sangwon
     yAxisDiv.appendChild(sumRadio);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode (" | "));
+    // Sangwon
 
     yAxisDiv.appendChild(meanLabel);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode ("  "));
+    // Sangwon
     yAxisDiv.appendChild(meanRadio);
-    yAxisDiv.appendChild(this.createHTMLNewLine());
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode (" | "));
+    //yAxisDiv.appendChild(this.createHTMLNewLine());
+    // Sangwon
 
     yAxisDiv.appendChild(sdLabel);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode ("  "));
+    // Sangwon
     yAxisDiv.appendChild(sdRadio);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode (" | "));
+    // Sangwon
 
     yAxisDiv.appendChild(maxLabel);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode ("  "));
+    // Sangwon
     yAxisDiv.appendChild(maxRadio);
-    yAxisDiv.appendChild(this.createHTMLNewLine());
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode (" | "));
+    //yAxisDiv.appendChild(this.createHTMLNewLine());
+    // Sangwon
 
     yAxisDiv.appendChild(minLabel);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode ("  "));
+    // Sangwon
     yAxisDiv.appendChild(minRadio);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode (" | "));
+    // Sangwon
 
     yAxisDiv.appendChild(averageLabel);
+    // Sangwon
+    yAxisDiv.appendChild(document.createTextNode ("  "));
+    // Sangwon
     yAxisDiv.appendChild(averageRadio);
+    // Sangwon
     yAxisDiv.appendChild(this.createHTMLNewLine());
+    yAxisDiv.appendChild(this.createHTMLNewLine());
+    // Sangwon
 
     var button = document.createElement("BUTTON");
     button.id = "createChartButton";
+    button.setAttribute("class","btn_s");
     button.appendChild(document.createTextNode("Create Chart"));
 
     var visualizationDiv = document.getElementById("visualizationDiv");
@@ -338,6 +391,9 @@ class HTMLCanvasUtils {
     controlPanelDiv.appendChild(xAxisDiv);
     controlPanelDiv.appendChild(yAxisDiv);
     controlPanelDiv.appendChild(button);
+    controlPanelDiv.appendChild(this.createHTMLNewLine());
+    controlPanelDiv.appendChild(this.createHTMLNewLine());
+
     visualizationDiv.appendChild(controlPanelDiv);
   }
 

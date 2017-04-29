@@ -53,12 +53,19 @@ function clearDynamicContents()
 {
   if (document.getElementById("dataTable") != undefined && document.getElementById("dataTable") != null)
   {
-    table_element = document.getElementById("dataTable");
+    var table_element = document.getElementById("dataTable");
     table_element.parentNode.removeChild(table_element);
-    filter_elements = document.getElementById("dynamicFilterDiv");
+    var filter_elements = document.getElementById("dynamicFilterDiv");
     filter_elements.parentNode.removeChild(filter_elements);
     var sqlFilterDiv = document.getElementById("dynamicSqlFilterDiv");
     sqlFilterDiv.parentNode.removeChild(sqlFilterDiv);
+    var controlPanelDiv = document.getElementById("controlPanelDiv");
+    controlPanelDiv.parentNode.removeChild(controlPanelDiv);
+
+    if(document.getElementById("chartDiv")!= null && document.getElementById("chartDiv")!= undefined){
+      var chartDiv = document.getElementById("chartDiv");
+      chartDiv.parentNode.removeChild(chartDiv);
+    }  
 
   }
 }
