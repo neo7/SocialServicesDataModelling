@@ -6,32 +6,29 @@ class RadarChart extends GenericChart {
     }
     
     createChart(){
-				console.log("---------------");
-				console.log(this.valueColumns);
-				console.log(this.chartValues);
-				console.log(this.chartColumns);
-				console.log(this.chart_type);
-				console.log("---------------");
+				
 				var backgroundColor = [];
 				var borderColor = [];
 				var red,green,blue,alpha;
-				for(var j=0;j<this.valueColumns[0].length;j++){
+				
+				var dataset = [];
+				for(var i=0;i<this.valueColumns.length;i++){
 					red = Math.floor((Math.random()*255)+0);
 					green = Math.floor((Math.random()*255)+0);
 					blue = Math.floor((Math.random()*255)+0);
 					alpha = 0.5;
-					backgroundColor[j] = 'rgba('+red+','+green+','+blue+','+alpha+')';
-					borderColor[j] = 'rgba('+red+','+green+','+blue+','+'1'+')';
-				}  
-					
-				var dataset = [];
-				for(var i=0;i<this.valueColumns.length;i++){
+					backgroundColor[i] = 'rgba('+red+','+green+','+blue+','+alpha+')';
+					borderColor[i] = 'rgba('+red+','+green+','+blue+','+'1'+')';
 					var obj = {};
 					obj["label"] = this.valueColumns[i];
 					obj["data"] = this.chartValues[i];
-					obj["backgroundColor"] = backgroundColor;
-					obj["borderColor"] = borderColor;
+					obj["backgroundColor"] = backgroundColor[i];
+					obj["borderColor"] = borderColor[i];
 					obj["borderWidth"] = 1;
+					obj["fill"] = true;		
+					obj["borderWidth"] = 1;
+					obj["pointBorderColor"] = "#fff";	
+					obj["pointHoverBackgroundColor"] = "#fff";
 					dataset.push(obj);
 				}
 				
