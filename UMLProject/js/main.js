@@ -9,6 +9,7 @@ class Main{
     this.senior_centers = document.getElementById("senior_centers");
     this.business_funds = document.getElementById("business_funds");
     this.public_health = document.getElementById("public_health");
+    this.sex_offenders = document.getElementById("sex_offenders");
 
     this.openNavLink.addEventListener("click", evt => this.openNav(evt));
     this.closeNavLink.addEventListener("click", evt => this.closeNav(evt));
@@ -18,6 +19,7 @@ class Main{
     this.senior_centers.addEventListener("click", evt => this.datasetEventListener(this.senior_centers.id));
     this.business_funds.addEventListener("click", evt => this.datasetEventListener(this.business_funds.id));
     this.public_health.addEventListener("click", evt => this.datasetEventListener(this.public_health.id));
+    this.sex_offenders.addEventListener("click", evt => this.datasetEventListener(this.sex_offenders.id));
   }
 
   openNav() {

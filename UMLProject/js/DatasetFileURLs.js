@@ -9,7 +9,8 @@ class DatasetFileURLs {
                   ['education_progress' , 'datasets/education_progress.csv'],
                   ['senior_centers' , 'datasets/senior_centers.csv'],
                   ['public_health' , 'datasets/public_health.csv'],
-                  ['business_funds' , 'datasets/business_funds.csv']
+                  ['business_funds' , 'datasets/business_funds.csv'],
+                  ['sex_offenders' , 'datasets/sex_offenders.csv']
               ];
               this.datasetMap = new Map(this.keyValueArray);
         }
