@@ -53,6 +53,7 @@ class FilterHandler{
 
   executeSQLQuery(sql_statement)
   {
+    console.log(sql_statement);
     this.DataFrame.sql.registerTable(this.dataframe, 'table', true)
     // Request on Table
     var filteredDF = this.DataFrame.sql.request(sql_statement);
