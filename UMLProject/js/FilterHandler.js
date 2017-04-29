@@ -14,7 +14,7 @@ class FilterHandler{
     this.DataFrame = dfjs.DataFrame;
     this.dataframe = dataframe;
 
-    this.canvasUtil = new HTMLCanvasUtils();
+    this.dashboardObserver = new DashboardObserver();
 
   }
 
@@ -93,7 +93,7 @@ class FilterHandler{
       }
     }
     var dashboard = new Dashboard(null);
-    dashboard.createDashboardElements(filteredDF);
+    this.dashboardObserver.createDashboardElements(filteredDF);
   }
 
   parseColumnsToString(columnCollection)
@@ -112,14 +112,6 @@ class FilterHandler{
     }
     selection_string = selection_string + "from table where ";
     return selection_string;
-  }
-  prepareWhereClause()
-  {
-
-  }
-  prepareQueryStatement(columns, whereClause)
-  {
-
   }
 
 
