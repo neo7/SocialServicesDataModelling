@@ -25,11 +25,11 @@
 }
 
 .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
+    position: relative;
+    top: 0px;
+    right: 5px;
     font-size: 36px;
-    margin-left: 50px;
+    margin-left: 140px;
 }
 
 @media screen and (max-height: 450px) {
@@ -43,8 +43,9 @@ html, body {
 }
 
 .container {
-  width: 80%;
-  margin: 15px auto;
+  width: 100%;
+  //margin: 15px auto;
+  background-color: #111;
 }
 
 .hide-me {
@@ -60,35 +61,6 @@ h1 {
   display: inline-block;
 }
 
-
-button {
-  background-color: #046380;
-  color: #FFF;
-  border: none;
-  padding: 10px 15px;
-  font-size: 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 2px 2px 0 #034154;
-  margin-bottom: 10px;
-  margin-left: 18px;
-  transition: opacity .4s ease-out, transform .4s ease-out, visibility .4s ease-out;
-  position: relative;
-  top: -10px;
-}
-
-button:hover {
-  background-color: #034F66;
-}
-
-button:active {
-  background-color: #034154;
-  box-shadow: none;
-  position: relative;
-  top: -8px;
-  left: 2px;
-}
 
 p {
   padding: 4px 0 2px 8px;
@@ -107,6 +79,8 @@ p {
     position:absolute;
     left:0; right:0;
     height: 92px;
+    width: 100%;
+    background-color: #111;
 }
 .left {
     position: absolute;
@@ -145,9 +119,18 @@ Change here for dynamic contents with their div classes.
   height: 100%;
 }
 
-.main .navcontent .columnFilter
+.main .navcontent .filter
 {
+  position: absolute;
+  left:220px;
+  top:450px;
+}
 
+.main .navcontent .sqlFilter
+{
+  position: absolute;
+  left:220px;
+  top:480px;
 }
 .main .navcontent .rowFilter
 {
@@ -155,5 +138,40 @@ Change here for dynamic contents with their div classes.
 }
 .main .navcontent .graphicalData
 {
+  position: absolute;
+  left:220px;
+  top:510px;
+}
 
+.main .navcontent .graphicalData .chartDiv .chartCanvas
+{
+  height: 500;
+  width: 700;
+}
+header {
+   // padding: 35px 0;
+    background: #111;
+//    margin: 0 auto;
+    text-align:center;
+}
+
+header h1 a, header h1 a:hover {
+ color: #818181;
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: -2px;
+    line-height:45px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+header h1 a span {
+       color: #818181;
+}
+
+header h2 {
+       color: #818181;
+        font-size: 13px;
+        position: relative;
+        top: -5px;
+        letter-spacing: 0;
 }

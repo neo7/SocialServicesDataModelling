@@ -7,42 +7,52 @@
 <body>
 
 <div class="top">
-  <h2>Social Services</h2>
-  <p>Data Sets</p>
+	<header>
+		<h1><a href="/"><span>Social Services</span></a></h1>
+		<h2>CSP586 Project (Team2)</h2>
+	</header>
 </div>
-
 
 <div class="left">
   <span style="font-size:50px;cursor:pointer;" onclick="openNav()">&#9776;</span>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#" id="housing">Housing</a>
-    <a href="#" id="education">Education</a>
-    <a href="#" id="crime">Crime</a>
-    <a href="#" id="healthcare">HealthCare</a>
+    <a href="#" id="senior_service_meal">Senior Svc Meal</a>
+    <a href="#" id="senior_centers">Senior Centers</a>
+    <a href="#" id="education_progress">Education Progress</a>
+    <a href="#" id="business_funds">Business Funds</a>
+    <a href="#" id="public_health">Health Statistics</a>
   </div> <!-- side nav code -->
 </div>
 <div id="main" class="main">
   <div id="content" class="navcontent">
     <div id="dataTableDiv" class="dataTable">
     </div> <!--Dynamic Content for datatable goes here-->
-    <div id="columnFilterDiv" class="columnFilter">
+    <div id="filterDiv" class="filter">
     </div><!--Dynamic Content for Column filter goes here-->
-    <div id="rowFilterDiv" class="rowFilter">
+    <div id="sqlFilterDiv" class="sqlFilter">
     </div><!--Dynamic Content for Row filter goes here-->
     <div id="visualizationDiv" class="graphicalData">
     </div><!--Dynamic Content for Visualizations go here-->
   </div>
 </div>
-
-
-<script src="js/Chart.js"></script>
-<script src="js/main.js"></script>
-<script src="js/dataframe.js"></script>
-
-
-
-
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript" src="js/dataframe.js"></script>
+<script type="text/javascript" src="js/HTMLCanvasUtils.js"></script>
+<script type="text/javascript" src="js/DataframeObject.js"></script>
+<script type="text/javascript" src="js/ChartData.js"></script>
+<script type="text/javascript" src="js/ChartDataProvider.js"></script>
+<script type="text/javascript" src="js/GenericChart.js"></script>
+<script type="text/javascript" src="js/BarChart.js"></script>
+<script type="text/javascript" src="js/LineChart.js"></script>
+<script type="text/javascript" src="js/PieChart.js"></script>
+<script type="text/javascript" src="js/RadarChart.js"></script>
+<script type="text/javascript" src="js/StackedChart.js"></script>
+<script type="text/javascript" src="js/ChartHandler.js"></script>
+<script type="text/javascript" src="js/FilterHandler.js"></script>
+<script type="text/javascript" src="js/Dashboard.js"></script>
+<script type="text/javascript" src="js/DatasetFileURLs.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>

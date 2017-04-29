@@ -6,53 +6,59 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
+var datasetKVObject = new DatasetFileURLs()
 
-var housingLink = document.getElementById("housing");
-var dashboardContainer = document.getElementById("dashboard-container")
+var senior_service_meal = document.getElementById("senior_service_meal");
+var education_progress = document.getElementById("education_progress");
+var senior_centers = document.getElementById("senior_centers");
+var business_funds = document.getElementById("business_funds");
+var public_health = document.getElementById("public_health");
 
-housingLink.addEventListener("click", function(){
-  var DataFrame = dfjs.DataFrame;
-  DataFrame.fromCSV('datasets/SeniorServicesMeal.csv').then(df =>{
-    var selectedDF = df.select('Month','Year','Home Delievered Meals','Congregate Dining Program')
-    var columns = selectedDF.listColumns();
-    var rows = selectedDF.toArray()
-
-    var navcontent = document.getElementById("content")
-    var dataTableDiv = document.getElementById("dataTableDiv")
-    var dataTable = document.createElement("TABLE");
-    dataTable.setAttribute("id", "dataTable");
-    dataTable.setAttribute("class", "table")
-    navcontent.style.display = "inline";
-    dataTableDiv.appendChild(dataTable);
-    dataTable.border = '1px';
-    dataTable.borderColor = "black";
-
-    var columnHeader = document.createElement("TR");
-    columnHeader.setAttribute("id", "columnHeader");
-    dataTable.appendChild(columnHeader);
-
-    for (i = 0; i < columns.length; i++)
-    {
-      var headerTD = document.createElement("TH");
-      var headerCell = document.createTextNode(columns[i])
-      headerTD.appendChild(headerCell);
-
-      columnHeader.appendChild(headerTD)
-
-    }
-    for (i = 0; i< rows.length; i++)
-    {
-      var tableRow = document.createElement("TR");
-      tableRow.setAttribute("id", "tableRow");
-      dataTable.appendChild(tableRow);
-      var rowElements = rows[i];
-      for (j = 0; j <rowElements.length; j++)
-      {
-        var columnTD = document.createElement("TD");
-        var columnCell = document.createTextNode(rowElements[j])
-        columnTD.appendChild(columnCell);
-        tableRow.appendChild(columnTD)
-      }
-    }
-  });
+senior_service_meal.addEventListener("click", function(){
+  clearDynamicContents()
+  populateDashboard(datasetKVObject.getFileURL(senior_service_meal.id))
+  closeNav()
 });
+
+senior_centers.addEventListener("click", function(){
+  clearDynamicContents()
+  populateDashboard(datasetKVObject.getFileURL(senior_centers.id))
+  closeNav()
+});
+
+education_progress.addEventListener("click", function(){
+  clearDynamicContents()
+  populateDashboard(datasetKVObject.getFileURL(education_progress.id))
+  closeNav()
+});
+
+business_funds.addEventListener("click", function(){
+  clearDynamicContents()
+  populateDashboard(datasetKVObject.getFileURL(business_funds.id))
+  closeNav()
+});
+
+public_health.addEventListener("click", function(){
+  clearDynamicContents()
+  populateDashboard(datasetKVObject.getFileURL(public_health.id))
+  closeNav()
+});
+
+
+function populateDashboard(value){
+  var dashboard = new Dashboard(value);
+}
+
+function clearDynamicContents()
+{
+  if (document.getElementById("dataTable") != undefined && document.getElementById("dataTable") != null)
+  {
+    table_element = document.getElementById("dataTable");
+    table_element.parentNode.removeChild(table_element);
+    filter_elements = document.getElementById("dynamicFilterDiv");
+    filter_elements.parentNode.removeChild(filter_elements);
+    var sqlFilterDiv = document.getElementById("dynamicSqlFilterDiv");
+    sqlFilterDiv.parentNode.removeChild(sqlFilterDiv);
+
+  }
+}
