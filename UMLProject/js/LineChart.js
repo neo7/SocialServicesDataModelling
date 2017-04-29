@@ -15,7 +15,7 @@ class LineChart extends GenericChart {
 				var backgroundColor = [];
 				var borderColor = [];
 				var red,green,blue,alpha;
-				for(var j=0;j<this.valueColumns[0].length;j++){
+				for(var j=0;j<this.chartValues[0].length;j++){
 					red = Math.floor((Math.random()*255)+0);
 					green = Math.floor((Math.random()*255)+0);
 					blue = Math.floor((Math.random()*255)+0);

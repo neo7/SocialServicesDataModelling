@@ -38,10 +38,10 @@ class HTMLCanvasUtils {
 
 
 
-        var checkbox = this.createHTMLCheckBox(columns[i], columns[i], true, "columnCheckbox", false);
+        var checkbox = new HTMLCanvasTemplate().createHTMLCheckBox(columns[i], columns[i], true, "columnCheckbox", false);
 
 
-        headerTD.appendChild(this.createHTMLNewLine());
+        headerTD.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
         headerTD.appendChild(checkbox);
 
       }
@@ -80,18 +80,18 @@ class HTMLCanvasUtils {
 
 
     var columns = dataframe.listColumns();
-    var blankOption = this.createHTMLSelectOption("blankoption", "Select Filter", "", "");
+    var blankOption = new HTMLCanvasTemplate().createHTMLSelectOption("blankoption", "Select Filter", "", "");
 
     selectDropDown.appendChild(blankOption);
     for (var i = 0; i< columns.length; i++)
     {
-      var option = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      var option = new HTMLCanvasTemplate().createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
       selectDropDown.appendChild(option);
     }
-    var blankcpz = this.createHTMLSelectOption("blankoption", "", "", "");
-    var gt = this.createHTMLSelectOption("gt", ">", ">", ">");
-    var lt = this.createHTMLSelectOption("lt", "<", "<", "<");
-    var eq = this.createHTMLSelectOption("eq", "=", "=", "=");
+    var blankcpz = new HTMLCanvasTemplate().createHTMLSelectOption("blankoption", "", "", "");
+    var gt = new HTMLCanvasTemplate().createHTMLSelectOption("gt", ">", ">", ">");
+    var lt = new HTMLCanvasTemplate().createHTMLSelectOption("lt", "<", "<", "<");
+    var eq = new HTMLCanvasTemplate().createHTMLSelectOption("eq", "=", "=", "=");
 
     selectDropDownComparison.appendChild(eq);
     selectDropDownComparison.appendChild(lt);
@@ -138,53 +138,6 @@ class HTMLCanvasUtils {
 
 
   }
-  createHTMLCheckBox(name, value, checked, clazz, nameElement)
-  {
-    var checkboxloc = document.createElement('input');
-    checkboxloc.type = "checkbox";
-    checkboxloc.name = name;
-    checkboxloc.value = value;
-    checkboxloc.id = value;
-    checkboxloc.checked = checked;
-    checkboxloc.className = clazz;
-
-    return checkboxloc;
-  }
-
-  createHTMLRadio(name, value, checked, clazz, label)
-  {
-    var radio = document.createElement('input');
-    radio.type = "radio";
-    radio.name = name;
-    radio.value = value;
-    radio.id = value;
-    radio.checked = checked;
-    radio.className = clazz;
-    radio.label = label;
-
-    return radio;
-  }
-
-  createHTMLNewLine()
-  {
-    var brloc = document.createElement("BR");
-
-    return brloc;
-  }
-
-
-
-  createHTMLSelectOption(id, name, value, label)
-  {
-    var option = document.createElement("option");
-    option.id = id;
-    option.name = name;
-    option.value = value;
-    option.label = label;
-    option.appendChild(document.createTextNode(name))
-
-    return option;
-  }
 
   createChartControls(dataframe)
   {
@@ -194,13 +147,13 @@ class HTMLCanvasUtils {
     selectChart.setAttribute("class", "dropdown_l");
 
 
-    var lineChartOption = this.createHTMLSelectOption("lineChartOption", "Line Chart", "line", "lineChartOption");
-    var barChartOption = this.createHTMLSelectOption("barChartOption", "Bar Chart", "bar", "barChartOption");
-    var pieChartOption = this.createHTMLSelectOption("pieChartOption", "Pie Chart", "pie", "pieChartOption");
-    var stackedChartOption = this.createHTMLSelectOption("stackedChartOption", "Stacked Chart", "bar", "stackedChartOption");
-    var radarChartOption = this.createHTMLSelectOption("radarChartOption", "Radar Chart", "radar", "radarChartOption");
+    var lineChartOption = new HTMLCanvasTemplate().createHTMLSelectOption("lineChartOption", "Line Chart", "line", "lineChartOption");
+    var barChartOption = new HTMLCanvasTemplate().createHTMLSelectOption("barChartOption", "Bar Chart", "bar", "barChartOption");
+    var pieChartOption = new HTMLCanvasTemplate().createHTMLSelectOption("pieChartOption", "Pie Chart", "pie", "pieChartOption");
+    var stackedChartOption = new HTMLCanvasTemplate().createHTMLSelectOption("stackedChartOption", "Stacked Chart", "bar", "stackedChartOption");
+    var radarChartOption = new HTMLCanvasTemplate().createHTMLSelectOption("radarChartOption", "Radar Chart", "radar", "radarChartOption");
 
-    var blankOption = this.createHTMLSelectOption("Select Chart Type", "Select Chart Type", "", "");
+    var blankOption = new HTMLCanvasTemplate().createHTMLSelectOption("Select Chart Type", "Select Chart Type", "", "");
 
     selectChart.appendChild(blankOption);
     selectChart.appendChild(lineChartOption);
@@ -219,18 +172,18 @@ class HTMLCanvasUtils {
 
 
     var columns = dataframe.listColumns();
-    var xblankOption = this.createHTMLSelectOption("X-Axis", "X-Axis", "X-Axis", "X-Axis");
+    var xblankOption = new HTMLCanvasTemplate().createHTMLSelectOption("X-Axis", "X-Axis", "X-Axis", "X-Axis");
 
     xselectDropDown.appendChild(xblankOption);
     for (var i = 0; i< columns.length; i++)
     {
-      var xoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      var xoption = new HTMLCanvasTemplate().createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
       xselectDropDown.appendChild(xoption);
     }
 
     xAxisDiv.appendChild(xselectDropDown);
 
-    var frequencyCheckbox = this.createHTMLCheckBox("xaxis", "frequency", false, "frequency", "Frequency");
+    var frequencyCheckbox = new HTMLCanvasTemplate().createHTMLCheckBox("xaxis", "frequency", false, "frequency", "Frequency");
 
     var frequencyLabel = document.createElement("LABEL");
     frequencyLabel.for ="frequency";
@@ -247,12 +200,12 @@ class HTMLCanvasUtils {
     yselectDropDown.setAttribute("class", "dropdown_l");
 
 
-    var yblankOption = this.createHTMLSelectOption("Y-Axis", "Y-Axis", "Y-Axis", "Y-Axis");
+    var yblankOption = new HTMLCanvasTemplate().createHTMLSelectOption("Y-Axis", "Y-Axis", "Y-Axis", "Y-Axis");
 
     yselectDropDown.appendChild(yblankOption);
     for (var i = 0; i< columns.length; i++)
     {
-      var yoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      var yoption = new HTMLCanvasTemplate().createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
       yselectDropDown.appendChild(yoption);
     }
 
@@ -262,12 +215,12 @@ class HTMLCanvasUtils {
     yastackDropDown.setAttribute("class", "dropdown_l");
 
 
-    var yastackBlankOption = this.createHTMLSelectOption("Stack-A-Y-Axis", "Stack-A-Y-Axis", null, "Stack-A-Y-Axis");
+    var yastackBlankOption = new HTMLCanvasTemplate().createHTMLSelectOption("Stack-A-Y-Axis", "Stack-A-Y-Axis", null, "Stack-A-Y-Axis");
 
     yastackDropDown.appendChild(yastackBlankOption);
     for (var i = 0; i< columns.length; i++)
     {
-      var yoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      var yoption = new HTMLCanvasTemplate().createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
       yastackDropDown.appendChild(yoption);
     }
 
@@ -277,26 +230,26 @@ class HTMLCanvasUtils {
     ybstackDropDown.setAttribute("class", "dropdown_l");
 
 
-    var ybstackBlankOption = this.createHTMLSelectOption("Stack-B-Y-Axis", "Stack-B-Y-Axis", null, "Stack-B-Y-Axis");
+    var ybstackBlankOption = new HTMLCanvasTemplate().createHTMLSelectOption("Stack-B-Y-Axis", "Stack-B-Y-Axis", null, "Stack-B-Y-Axis");
 
     ybstackDropDown.appendChild(ybstackBlankOption);
     for (var i = 0; i< columns.length; i++)
     {
-      var yoption = this.createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
+      var yoption = new HTMLCanvasTemplate().createHTMLSelectOption(columns[i], columns[i], columns[i], columns[i])
       ybstackDropDown.appendChild(yoption);
     }
 
     yAxisDiv.appendChild(yselectDropDown);
     yAxisDiv.appendChild(yastackDropDown);
     yAxisDiv.appendChild(ybstackDropDown);
-    yAxisDiv.appendChild(this.createHTMLNewLine());
+    yAxisDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
 
-    var sumRadio = this.createHTMLRadio("yaxis", "sum", false, "sum", "Sum");
-    var meanRadio = this.createHTMLRadio("yaxis", "mean", false, "mean", "Mean");
-    var sdRadio = this.createHTMLRadio("yaxis", "sd", false, "sd", "Std Deviation");
-    var maxRadio = this.createHTMLRadio("yaxis", "max", false, "max", "Max");
-    var minRadio = this.createHTMLRadio("yaxis", "min", false, "min", "Min");
-    var averageRadio = this.createHTMLRadio("yaxis", "average", false, "average", "Average");
+    var sumRadio = new HTMLCanvasTemplate().createHTMLRadio("yaxis", "sum", false, "sum", "Sum");
+    var meanRadio = new HTMLCanvasTemplate().createHTMLRadio("yaxis", "mean", false, "mean", "Mean");
+    var sdRadio = new HTMLCanvasTemplate().createHTMLRadio("yaxis", "sd", false, "sd", "Std Deviation");
+    var maxRadio = new HTMLCanvasTemplate().createHTMLRadio("yaxis", "max", false, "max", "Max");
+    var minRadio = new HTMLCanvasTemplate().createHTMLRadio("yaxis", "min", false, "min", "Min");
+    var averageRadio = new HTMLCanvasTemplate().createHTMLRadio("yaxis", "average", false, "average", "Average");
 
     var sumLabel = document.createElement("LABEL");
     sumLabel.for ="sum";
@@ -338,7 +291,7 @@ class HTMLCanvasUtils {
     yAxisDiv.appendChild(meanRadio);
     // Sangwon
     yAxisDiv.appendChild(document.createTextNode (" | "));
-    //yAxisDiv.appendChild(this.createHTMLNewLine());
+    //yAxisDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
     // Sangwon
 
     yAxisDiv.appendChild(sdLabel);
@@ -357,7 +310,7 @@ class HTMLCanvasUtils {
     yAxisDiv.appendChild(maxRadio);
     // Sangwon
     yAxisDiv.appendChild(document.createTextNode (" | "));
-    //yAxisDiv.appendChild(this.createHTMLNewLine());
+    //yAxisDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
     // Sangwon
 
     yAxisDiv.appendChild(minLabel);
@@ -375,8 +328,8 @@ class HTMLCanvasUtils {
     // Sangwon
     yAxisDiv.appendChild(averageRadio);
     // Sangwon
-    yAxisDiv.appendChild(this.createHTMLNewLine());
-    yAxisDiv.appendChild(this.createHTMLNewLine());
+    yAxisDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
+    yAxisDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
     // Sangwon
 
     var button = document.createElement("BUTTON");
@@ -391,8 +344,8 @@ class HTMLCanvasUtils {
     controlPanelDiv.appendChild(xAxisDiv);
     controlPanelDiv.appendChild(yAxisDiv);
     controlPanelDiv.appendChild(button);
-    controlPanelDiv.appendChild(this.createHTMLNewLine());
-    controlPanelDiv.appendChild(this.createHTMLNewLine());
+    controlPanelDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
+    controlPanelDiv.appendChild(new HTMLCanvasTemplate().createHTMLNewLine());
 
     visualizationDiv.appendChild(controlPanelDiv);
   }

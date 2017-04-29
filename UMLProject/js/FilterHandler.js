@@ -83,7 +83,14 @@ class FilterHandler{
       filter_elements.parentNode.removeChild(filter_elements);
       var sqlFilterDiv = document.getElementById("dynamicSqlFilterDiv");
       sqlFilterDiv.parentNode.removeChild(sqlFilterDiv);
+      var controlPanelDiv = document.getElementById("controlPanelDiv");
+      controlPanelDiv.parentNode.removeChild(controlPanelDiv);
 
+      if(document.getElementById("chartDiv")!= null && document.getElementById("chartDiv")!= undefined)
+      {
+        var chartDiv = document.getElementById("chartDiv");
+        chartDiv.parentNode.removeChild(chartDiv);
+      }
     }
     var dashboard = new Dashboard(null);
     dashboard.createDashboardElements(filteredDF);
