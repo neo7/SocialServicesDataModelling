@@ -6,7 +6,6 @@ class Dashboard
     {
       this.DataFrame = dfjs.DataFrame;
       this.file_url = file_url;
-      this.canvasUtil = new HTMLCanvasUtils();
       this.populateDashboard();
       this.dashboardObserver = new DashboardObserver();
     }
